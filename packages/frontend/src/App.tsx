@@ -5,6 +5,7 @@ import { Test } from '../../shared/src/enums/test.enum'
 
 function App() {
   const cos: string = 'dupa';
+  console.log('ok')
   return (
     <div className="App">
       {Test.Siema}
