@@ -4,9 +4,11 @@ import './App.css';
 import { Test } from '../../shared/src/enums/test.enum'
 
 function App() {
+  const cos: string = 'dupa';
   return (
     <div className="App">
       {Test.Siema}
+      {cos}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
