@@ -11,7 +11,7 @@
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
         "tsconfigRootDir": "__dirname",
-        "project": ["./services/*/tsconfig.json", "./libs/*/tsconfig.json"]
+        "project": ["./tsconfig.json", "./libs/*/tsconfig.json"]
       },
       "extends": [
         "airbnb-typescript/base",
