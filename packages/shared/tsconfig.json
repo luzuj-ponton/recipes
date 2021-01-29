@@ -7,7 +7,5 @@
   "include": [
     // whatever paths you intend to lint
     "src",
-    "test",
-    "tools"
   ]
 }

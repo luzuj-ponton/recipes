@@ -4,8 +4,6 @@ import './App.css';
 import { Test } from '../../shared/src/enums/test.enum'
 
 function App() {
-  const cos: string = 'dupa';
-  const ktos = 'kupa';
   return (  
     <div className="App">
       {Test.Siema}

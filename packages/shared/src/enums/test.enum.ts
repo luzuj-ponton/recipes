@@ -1,3 +1,3 @@
-export const Test = {
-  Siema: 'siema',
+export enum Test {
+  Siema = 'siema',
 } 

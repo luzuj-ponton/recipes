@@ -5,11 +5,7 @@
     "publish": "lerna run tsc && lerna publish",
     "lint": "eslint '*/**/*.{js,ts,tsx}'"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
-  },
+  
   "lint-staged": {
     "*.{js,ts,tsx,jsx}": [
       "eslint"
