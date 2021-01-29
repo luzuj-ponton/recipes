@@ -1,19 +1,9 @@
 {
   "name": "shared",
   "version": "0.0.1",
-  "description": "> TODO: description",
   "author": "Mikołaj Duchewicz <mikolaj.duchewicz@mug.pl>",
   "homepage": "",
   "license": "ISC",
-  "types": "src/index.d.ts",
-  "main": "lib/shared.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   }
