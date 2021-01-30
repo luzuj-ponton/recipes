@@ -1,0 +1,32 @@
+import { IsArray, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Step } from '../recipes.types';
+
+export class RecipeDto {
+  @IsNotEmpty()
+  @IsString()
+  title: string;
+
+  @IsNotEmpty()
+  @IsString()
+  description: string;
+
+  @IsNumber()
+  prepTimeMax: number;
+
+  @IsNumber()
+  prepTimeMin: number;
+
+  @IsNumber()
+  servings: number;
+
+  @IsNotEmpty()
+  @IsString()
+  photoUrl: string;
+
+  @IsNotEmpty()
+  @IsArray()
+  ingredients: string[];
+
+  @IsArray()
+  steps: Step[];
+}
