@@ -4,7 +4,7 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
     tsconfigRootDir: __dirname,
-    project: './tsconfig',
+    project: './tsconfig.eslint.json',
   },
   extends: [
     "airbnb-typescript",
@@ -14,6 +14,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
   ],
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "./tsconfig.eslint.json",
   },
 };
