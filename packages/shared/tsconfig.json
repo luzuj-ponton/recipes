@@ -1,11 +1,18 @@
 {
   "extends": "../../tsconfig.json",
+  
   "compilerOptions": {
-    // ensure that nobody can accidentally use this config for a build
-    "noEmit": true
+    "composite": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "declaration": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true
   },
-  "include": [
-    // whatever paths you intend to lint
-    "src",
-  ]
+  "exclude": ["node_modules"],
+  "include": ["src"],
 }

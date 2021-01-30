@@ -5,7 +5,11 @@
     "sourceMap": true
   },
   "paths": {
-    "@recipes/*": ["./src/*", "./build/*"]
+    "@recipes/*": ["./src/*", "./build/*"],
+    "@recipes/frontend/*": ["./src/*", "./build/*"],
+    "@recipes/backend/*": ["./src/*", "./build/*"],
+    "@recipes/shared/*": ["./src/*"],
+    "@recipes/common/*": ["./src/*"],
   },
   "exclude": [
     "node_modules",

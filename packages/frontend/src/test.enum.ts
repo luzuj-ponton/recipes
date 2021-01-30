@@ -1,3 +1,3 @@
 export enum Test {
-  Siema = 'siema',
+  Cos = "cos",
 }
