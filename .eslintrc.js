@@ -4,16 +4,16 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
     tsconfigRootDir: __dirname,
-    project: './tsconfig.eslint.json',
+    project: './tsconfig.json',
   },
+  plugins: ["@typescript-eslint"],
+  ignorePatterns: ['.eslintrc.js'],
   extends: [
     "airbnb-typescript",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "prettier/@typescript-eslint",
   ],
-  parserOptions: {
-    project: "./tsconfig.eslint.json",
-  },
 };
