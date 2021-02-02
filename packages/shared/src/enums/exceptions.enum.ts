@@ -1,3 +1,3 @@
 export enum Exceptions {
-  UserAlredyExists = "User alredy exists",
+  UserAlredyExists = "User already exists",
 }
