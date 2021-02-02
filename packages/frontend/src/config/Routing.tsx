@@ -2,7 +2,7 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import { Routes } from "@/enums/routes.enum";
+import { Routes } from "enums/routes.enum";
 
 export const Routing: React.FC = () => {
   return (
