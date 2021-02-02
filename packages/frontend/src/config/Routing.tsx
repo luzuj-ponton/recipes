@@ -2,8 +2,7 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import { Routes } from "../enums/routes.enum";
-import { Layout } from "../Layout/Layout";
+import { Routes } from "@/enums/routes.enum";
 
 export const Routing: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ export const Routing: React.FC = () => {
       <Route path={Routes.Recipe} />
       <Route path={Routes.Login} />
       <Route path={Routes.Register} />
-      <Route path="/" component={Layout} />
+      {/* <Route path="/" component={Layout} /> */}
     </Switch>
   );
 };
