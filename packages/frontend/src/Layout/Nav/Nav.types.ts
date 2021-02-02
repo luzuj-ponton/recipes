@@ -1,5 +1,3 @@
-export interface NavProps {}
-
 export interface HamburgerInnerProps {
   isOpen: boolean;
 }
@@ -9,5 +7,5 @@ export interface DrawerMenuProps {
 }
 
 export interface LinkProps {
-  isActive: boolean;
+  $isActive: boolean;
 }

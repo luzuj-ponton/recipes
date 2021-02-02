@@ -7,8 +7,7 @@ import { Layout } from "../Layout/Layout";
 
 export const Routing: React.FC = () => {
   return (
-    <>
-      <Layout />
+    <Layout>
       <Switch>
         <Route path={Routes.AddRecipe} />
         <Route path={Routes.EditRecipe} />
@@ -17,6 +16,6 @@ export const Routing: React.FC = () => {
         <Route path={Routes.Register} />
         <Route path={Routes.Home} />
       </Switch>
-    </>
+    </Layout>
   );
 };

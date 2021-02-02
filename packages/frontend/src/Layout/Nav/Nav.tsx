@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
-import { NavProps } from "./Nav.types";
 import {
   Wrapper,
   Hamburger,
@@ -24,14 +23,19 @@ import linkedinIcon from "../../assets/images/linkedin.svg";
 import facebookIcon from "../../assets/images/facebook.svg";
 import githubIcon from "../../assets/images/github.svg";
 
-export const Nav: React.FC<NavProps> = () => {
+const links = [
+  { text: "Home", path: Routes.Home },
+  { text: "Add recipe", path: Routes.AddRecipe },
+];
+
+export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const { pathname } = useLocation();
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
   };
-
-  const { pathname } = useLocation();
 
   return (
     <Wrapper>
@@ -46,19 +50,18 @@ export const Nav: React.FC<NavProps> = () => {
         </LogoRow>
 
         <NavItems>
-          <NavItem>
-            <StyledLink to={Routes.Home} isActive={pathname === Routes.Home}>
-              Home
-            </StyledLink>
-          </NavItem>
-          <NavItem>
-            <StyledLink to={Routes.AddRecipe} isActive={pathname === Routes.AddRecipe}>
-              Add recipe
-            </StyledLink>
-          </NavItem>
+          {links.map((el) => {
+            return (
+              <NavItem key={el.path}>
+                <StyledLink to={el.path} $isActive={el.path === pathname}>
+                  {el.text}
+                </StyledLink>
+              </NavItem>
+            );
+          })}
         </NavItems>
         <Link to={Routes.Register}>
-          <Button variant="primary" text="Sign Up" />
+          <Button variant="primary">Sign up</Button>
         </Link>
         <SocialsWrapper>
           <SocialIcon src={linkedinIcon} />

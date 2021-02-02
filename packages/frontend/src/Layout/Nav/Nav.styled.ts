@@ -67,16 +67,16 @@ export const DrawerMenu = styled.nav<DrawerMenuProps>`
   padding: 20px;
   background-color: ${Color.Black};
   position: fixed;
-  right: -40%;
+  transform: translateX(100%);
   top: 0;
+  right: 0;
   width: 270px;
-  transition: 0.3s ease;
+  transition: 0.3s ease-in-out;
 
   ${({ isOpen }) =>
     isOpen &&
     css`
-      top: 0;
-      right: 0;
+      transform: translateX(0);
     `}
 `;
 
@@ -116,7 +116,7 @@ export const NavItem = styled.li`
 export const StyledLink = styled(Link)<LinkProps>`
   display: block;
   font-size: ${FontSize.Medium};
-  color: ${({ isActive }) => (isActive ? `${Color.White}` : `${rgba(`${Color.White}`, 0.4)}`)};
+  color: ${({ $isActive }) => ($isActive ? `${Color.White}` : `${rgba(`${Color.White}`, 0.4)}`)};
   padding: 8px 0;
   transition: 0.2s;
   :hover {
