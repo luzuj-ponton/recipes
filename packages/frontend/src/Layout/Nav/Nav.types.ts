@@ -7,5 +7,10 @@ export interface DrawerMenuProps {
 }
 
 export interface LinkProps {
-  $isActive: boolean;
+  $isActive?: boolean;
+  $isDesktop?: boolean;
+}
+
+export interface LogoProps {
+  $isDrawerMenuLogo?: boolean;
 }

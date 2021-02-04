@@ -1,10 +1,11 @@
 import styled, { css } from "styled-components";
 import { Color } from "../../enums/color.enum";
 import { FontSize } from "../../enums/fontsize.enum";
-import { HamburgerInnerProps, DrawerMenuProps, LinkProps } from "./Nav.types";
+import { HamburgerInnerProps, DrawerMenuProps, LinkProps, LogoProps } from "./Nav.types";
 import svg from "react-inlinesvg";
 import { Link } from "react-router-dom";
 import { rgba } from "polished";
+import { Breakpoint } from "../../enums/breakpoint.enum";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -12,9 +13,15 @@ export const Wrapper = styled.div`
 export const Hamburger = styled.div`
   height: 20px;
   width: 20px;
-  padding: 5px;
-  position: relative;
+  position: fixed;
+  top: 46px;
+  left: 16px;
   cursor: pointer;
+  margin-right: 10px;
+
+  @media ${Breakpoint.Tablet} {
+    display: none;
+  }
 `;
 
 export const HamburgerInner = styled.span<HamburgerInnerProps>`
@@ -70,8 +77,19 @@ export const DrawerMenu = styled.nav<DrawerMenuProps>`
   transform: translateX(100%);
   top: 0;
   right: 0;
-  width: 270px;
+  width: 100%;
   transition: 0.3s ease-in-out;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  @media ${Breakpoint.MobileS} {
+    width: 270px;
+  }
+
+  @media ${Breakpoint.Tablet} {
+    display: none;
+  }
 
   ${({ isOpen }) =>
     isOpen &&
@@ -80,10 +98,10 @@ export const DrawerMenu = styled.nav<DrawerMenuProps>`
     `}
 `;
 
-export const Logo = styled.img`
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+export const Logo = styled(Link)<LogoProps>`
+  font-size: 24px;
+  color: ${({ $isDrawerMenuLogo }) => ($isDrawerMenuLogo ? `${Color.White}` : `${Color.Red}`)};
+  font-family: "Leckerli One", cursive;
 `;
 export const CloseIcon = styled(svg)`
   fill: ${rgba(`${Color.White}`, 0.4)};
@@ -91,6 +109,8 @@ export const CloseIcon = styled(svg)`
   height: 18px;
   cursor: pointer;
   transition: 0.2s;
+  margin: 6px;
+  align-self: flex-start;
   :hover {
     fill: ${Color.White};
   }
@@ -113,15 +133,40 @@ export const NavItem = styled.li`
   text-align: center;
 `;
 
+export const DesktopNavItems = styled.ul`
+  display: none;
+  @media ${Breakpoint.Tablet} {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0;
+    margin-left: 60px;
+    list-style: none;
+  }
+`;
+
 export const StyledLink = styled(Link)<LinkProps>`
-  display: block;
+  display: ${({ $isDesktop }) => ($isDesktop ? "none" : "block")};
   font-size: ${FontSize.Medium};
   color: ${({ $isActive }) => ($isActive ? `${Color.White}` : `${rgba(`${Color.White}`, 0.4)}`)};
   padding: 8px 0;
-  transition: 0.2s;
+  transition: color 0.2s;
   :hover {
     color: ${Color.White};
-    font-size: ${FontSize.Medium};
+  }
+  :nth-child(2) {
+    margin-right: 14px;
+  }
+
+  @media ${Breakpoint.Tablet} {
+    display: block;
+    color: ${({ $isActive }) => ($isActive ? `${Color.Red}` : Color.Grey)};
+    font-weight: 500;
+    font-size: ${FontSize.SmallS};
+    padding: 15px;
+
+    :hover {
+      color: ${Color.Red};
+    }
   }
 `;
 
@@ -129,8 +174,9 @@ export const SocialsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 70px;
+  width: 100px;
   margin-top: 40px;
+  align-self: center;
 `;
 
 export const SocialIcon = styled(svg)`
@@ -142,5 +188,43 @@ export const SocialIcon = styled(svg)`
   :hover {
     fill: ${Color.White};
     transform: scale(1.1);
+  }
+`;
+
+export const HeaderStyled = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 0;
+  padding-left: 16px;
+
+  @media ${Breakpoint.Tablet} {
+    padding-left: 0;
+  }
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SearchIcon = styled(svg)`
+  width: 20px;
+  height: 20px;
+  margin-right: 30px;
+  fill: ${Color.Grey};
+  cursor: pointer;
+  :hover {
+    fill: ${Color.Black};
+  }
+`;
+export const DesktopMenu = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media ${Breakpoint.Desktop} {
+    display: flex;
   }
 `;
