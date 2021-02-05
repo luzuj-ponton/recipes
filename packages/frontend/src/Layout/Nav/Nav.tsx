@@ -5,29 +5,21 @@ import {
   Wrapper,
   Hamburger,
   HamburgerInner,
-  DrawerMenu,
   NavItems,
   NavItem,
   Logo,
-  CloseIcon,
-  LogoRow,
   StyledLink,
-  SocialsWrapper,
-  SocialIcon,
   HeaderStyled,
   ButtonsWrapper,
   SearchIcon,
   DesktopMenu,
   DesktopNavItems,
 } from "./Nav.styled";
+import { DrawerMenu } from "../../components/DrawerMenu/DrawerMenu";
 import { Button } from "../../components/Button/Button";
 import { Routes } from "../../enums/routes.enum";
 import { useLocation } from "react-router-dom";
 import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
-import closeIcon from "../../assets/images/close.svg";
-import linkedinIcon from "../../assets/images/linkedin.svg";
-import facebookIcon from "../../assets/images/facebook.svg";
-import githubIcon from "../../assets/images/github.svg";
 import searchIcon from "../../assets/images/loupe.svg";
 
 const links = [
@@ -75,14 +67,7 @@ export const Nav: React.FC = () => {
         <Hamburger onClick={toggleNav}>
           <HamburgerInner isOpen={isOpen} />
         </Hamburger>
-        <DrawerMenu isOpen={isOpen}>
-          <LogoRow>
-            <Logo $isDrawerMenuLogo to={Routes.Home}>
-              Bochen
-            </Logo>
-            <CloseIcon src={closeIcon} onClick={toggleNav} />
-          </LogoRow>
-
+        <DrawerMenu isOpen={isOpen} onClick={toggleNav}>
           <NavItems>
             {links.map((el) => {
               return (
@@ -97,11 +82,6 @@ export const Nav: React.FC = () => {
           <Link to={Routes.Register}>
             <Button variant="primary">Sign up</Button>
           </Link>
-          <SocialsWrapper>
-            <SocialIcon src={linkedinIcon} />
-            <SocialIcon src={facebookIcon} />
-            <SocialIcon src={githubIcon} />
-          </SocialsWrapper>
         </DrawerMenu>
       </ClickOutside>
     </Wrapper>

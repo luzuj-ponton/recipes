@@ -1,15 +1,17 @@
 import styled, { css } from "styled-components";
 import { Color } from "../../enums/color.enum";
 import { FontSize } from "../../enums/fontsize.enum";
-import { HamburgerInnerProps, DrawerMenuProps, LinkProps, LogoProps } from "./Nav.types";
+import { HamburgerInnerProps, LinkProps } from "./Nav.types";
 import svg from "react-inlinesvg";
 import { Link } from "react-router-dom";
 import { rgba } from "polished";
 import { Breakpoint } from "../../enums/breakpoint.enum";
+import { FontWeight } from "../../enums/fontweight.enum";
 
 export const Wrapper = styled.div`
   display: flex;
 `;
+
 export const Hamburger = styled.div`
   height: 20px;
   width: 20px;
@@ -69,58 +71,10 @@ export const HamburgerInner = styled.span<HamburgerInnerProps>`
     `}
 `;
 
-export const DrawerMenu = styled.nav<DrawerMenuProps>`
-  height: 100vh;
-  padding: 20px;
-  background-color: ${Color.Black};
-  position: fixed;
-  transform: translateX(100%);
-  top: 0;
-  right: 0;
-  width: 100%;
-  transition: 0.3s ease-in-out;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-
-  @media ${Breakpoint.MobileS} {
-    width: 270px;
-  }
-
-  @media ${Breakpoint.Tablet} {
-    display: none;
-  }
-
-  ${({ isOpen }) =>
-    isOpen &&
-    css`
-      transform: translateX(0);
-    `}
-`;
-
-export const Logo = styled(Link)<LogoProps>`
-  font-size: 24px;
-  color: ${({ $isDrawerMenuLogo }) => ($isDrawerMenuLogo ? `${Color.White}` : `${Color.Red}`)};
+export const Logo = styled(Link)`
+  font-size: ${FontSize.MediumL};
+  color: ${Color.Red};
   font-family: "Leckerli One", cursive;
-`;
-export const CloseIcon = styled(svg)`
-  fill: ${rgba(`${Color.White}`, 0.4)};
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin: 6px;
-  align-self: flex-start;
-  :hover {
-    fill: ${Color.White};
-  }
-`;
-
-export const LogoRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
 `;
 
 export const NavItems = styled.ul`
@@ -153,41 +107,17 @@ export const StyledLink = styled(Link)<LinkProps>`
   :hover {
     color: ${Color.White};
   }
-  :nth-child(2) {
-    margin-right: 14px;
-  }
 
   @media ${Breakpoint.Tablet} {
     display: block;
     color: ${({ $isActive }) => ($isActive ? `${Color.Red}` : Color.Grey)};
-    font-weight: 500;
+    font-weight: ${FontWeight.Medium};
     font-size: ${FontSize.SmallS};
     padding: 15px;
 
     :hover {
       color: ${Color.Red};
     }
-  }
-`;
-
-export const SocialsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100px;
-  margin-top: 40px;
-  align-self: center;
-`;
-
-export const SocialIcon = styled(svg)`
-  width: 20px;
-  height: 20px;
-  fill: ${rgba(`${Color.White}`, 0.4)};
-  transition: 0.2s;
-  cursor: pointer;
-  :hover {
-    fill: ${Color.White};
-    transform: scale(1.1);
   }
 `;
 
@@ -208,6 +138,10 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${StyledLink} {
+    margin-right: 14px;
+  }
 `;
 
 export const SearchIcon = styled(svg)`
@@ -215,6 +149,7 @@ export const SearchIcon = styled(svg)`
   height: 20px;
   margin-right: 30px;
   fill: ${Color.Grey};
+  transition: 0.2s;
   cursor: pointer;
   :hover {
     fill: ${Color.Black};
