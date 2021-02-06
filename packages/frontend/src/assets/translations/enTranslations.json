@@ -1,0 +1,12 @@
+{
+  "common": {
+    "actions": {
+      "sign-in": "Sign in",
+      "sign-up": "Sign up"
+    },
+    "labels": {
+      "home": "Home",
+      "add-recipe": "Add recipe"
+    }
+  }
+}
