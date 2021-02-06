@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
 import {
   Wrapper,
   Hamburger,
@@ -15,6 +17,7 @@ import {
   SocialsWrapper,
   SocialIcon,
 } from "./Nav.styled";
+
 import { Button } from "../../components/Button/Button";
 import { Routes } from "../../enums/routes.enum";
 import { useLocation } from "react-router-dom";
@@ -24,13 +27,13 @@ import facebookIcon from "../../assets/images/facebook.svg";
 import githubIcon from "../../assets/images/github.svg";
 
 const links = [
-  { text: "Home", path: Routes.Home },
-  { text: "Add recipe", path: Routes.AddRecipe },
+  { text: i18n.t("common:labels.home"), path: Routes.Home },
+  { text: i18n.t("common:labels.add-recipe"), path: Routes.AddRecipe },
 ];
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   const toggleNav = () => {
@@ -61,7 +64,7 @@ export const Nav: React.FC = () => {
           })}
         </NavItems>
         <Link to={Routes.Register}>
-          <Button variant="primary">Sign up</Button>
+          <Button variant="primary">{t("common:actions.sign-up")}</Button>
         </Link>
         <SocialsWrapper>
           <SocialIcon src={linkedinIcon} />
