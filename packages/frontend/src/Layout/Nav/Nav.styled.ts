@@ -77,12 +77,6 @@ export const Logo = styled(Link)`
   font-family: "Leckerli One", cursive;
 `;
 
-export const NavItems = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-`;
 export const NavItem = styled.li`
   text-align: center;
 `;

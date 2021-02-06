@@ -5,7 +5,6 @@ import {
   Wrapper,
   Hamburger,
   HamburgerInner,
-  NavItems,
   NavItem,
   Logo,
   StyledLink,
@@ -21,11 +20,8 @@ import { Routes } from "../../enums/routes.enum";
 import { useLocation } from "react-router-dom";
 import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
-
-const links = [
-  { text: "Home", path: Routes.Home },
-  { text: "Add recipe", path: Routes.AddRecipe },
-];
+import { RouteInfo } from "src/types/RouteInfo.types";
+import { routes } from "src/config/Routes";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -42,20 +38,18 @@ export const Nav: React.FC = () => {
         <DesktopMenu>
           <Logo to={Routes.Home}>Bochen</Logo>
           <DesktopNavItems>
-            {links.map((el) => {
-              return (
-                <NavItem key={el.path}>
-                  <StyledLink $isDesktop to={el.path} $isActive={el.path === pathname}>
-                    {el.text}
-                  </StyledLink>
-                </NavItem>
-              );
-            })}
+            {routes.map(({ path, text }: RouteInfo) => (
+              <NavItem key={path}>
+                <StyledLink $isDesktop to={path} $isActive={path === pathname}>
+                  {text}
+                </StyledLink>
+              </NavItem>
+            ))}
           </DesktopNavItems>
         </DesktopMenu>
         <ButtonsWrapper>
           <SearchIcon src={searchIcon} />
-          <StyledLink $isDesktop to={Routes.Login}>
+          <StyledLink $isActive={pathname === Routes.Register} $isDesktop to={Routes.Login}>
             Sign in
           </StyledLink>
           <Link to={Routes.Register}>
@@ -68,17 +62,14 @@ export const Nav: React.FC = () => {
           <HamburgerInner isOpen={isOpen} />
         </Hamburger>
         <DrawerMenu isOpen={isOpen} onClick={toggleNav}>
-          <NavItems>
-            {links.map((el) => {
-              return (
-                <NavItem key={el.path}>
-                  <StyledLink onClick={toggleNav} to={el.path} $isActive={el.path === pathname}>
-                    {el.text}
-                  </StyledLink>
-                </NavItem>
-              );
-            })}
-          </NavItems>
+          {routes.map(({ path, text }: RouteInfo) => (
+            <NavItem key={path}>
+              <StyledLink onClick={toggleNav} to={path} $isActive={path === pathname}>
+                {text}
+              </StyledLink>
+            </NavItem>
+          ))}
+
           <Link to={Routes.Register}>
             <Button variant="primary">Sign up</Button>
           </Link>

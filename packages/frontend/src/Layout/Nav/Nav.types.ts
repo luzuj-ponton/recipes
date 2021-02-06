@@ -3,6 +3,6 @@ export interface HamburgerInnerProps {
 }
 
 export interface LinkProps {
-  $isActive?: boolean;
+  $isActive: boolean;
   $isDesktop?: boolean;
 }

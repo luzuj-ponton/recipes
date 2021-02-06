@@ -8,7 +8,7 @@ import { rgba } from "polished";
 import { FontSize } from "../../enums/fontsize.enum";
 import svg from "react-inlinesvg";
 
-export const LogoRow = styled.div`
+export const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -55,6 +55,13 @@ export const NavStyled = styled.nav<NavStyledProps>`
   @media ${Breakpoint.Tablet} {
     display: none;
   }
+`;
+
+export const NavItems = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 `;
 
 export const SocialsWrapper = styled.div`
