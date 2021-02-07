@@ -9,11 +9,11 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     list-style: none;
     font-family: 'Montserrat', sans-serif;
+    outline: none;
 }
 
 button {
     border: none;
-    outline: none;
 }
 
 body {
