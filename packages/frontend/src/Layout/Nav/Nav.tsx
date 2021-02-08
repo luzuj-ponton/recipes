@@ -15,6 +15,7 @@ import {
   DesktopMenu,
   DesktopNavItems,
 } from "./Nav.styled";
+import i18n from "i18next";
 
 import { DrawerMenu } from "../../components/DrawerMenu/DrawerMenu";
 import { Button } from "../../components/Button/Button";
@@ -23,7 +24,12 @@ import { useLocation } from "react-router-dom";
 import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
 import { RouteInfo } from "src/types/RouteInfo.types";
-import { routes } from "src/config/Routes";
+// import { routes } from "src/config/Routes";
+
+const routes: RouteInfo[] = [
+  { text: i18n.t("common:labels.home"), path: Routes.Home },
+  { text: i18n.t("common:labels.add-recipe"), path: Routes.AddRecipe },
+];
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
