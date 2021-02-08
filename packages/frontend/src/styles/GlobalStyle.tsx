@@ -16,10 +16,6 @@ button {
     outline: none;
 }
 
-body {
-    height:150vh;
-}
-
 `;
 
 export default GlobalStyle;

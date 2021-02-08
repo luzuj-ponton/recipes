@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Wrapper,
   Hamburger,
@@ -14,6 +15,7 @@ import {
   DesktopMenu,
   DesktopNavItems,
 } from "./Nav.styled";
+
 import { DrawerMenu } from "../../components/DrawerMenu/DrawerMenu";
 import { Button } from "../../components/Button/Button";
 import { Routes } from "../../enums/routes.enum";
@@ -25,7 +27,7 @@ import { routes } from "src/config/Routes";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const { t } = useTranslation();
   const { pathname } = useLocation();
 
   const toggleNav = () => {
@@ -69,9 +71,8 @@ export const Nav: React.FC = () => {
               </StyledLink>
             </NavItem>
           ))}
-
           <Link to={Routes.Register}>
-            <Button variant="primary">Sign up</Button>
+            <Button variant="primary">{t("common:actions.sign-up")}</Button>
           </Link>
         </DrawerMenu>
       </ClickOutside>

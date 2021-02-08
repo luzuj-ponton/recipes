@@ -7,6 +7,5 @@ export const Wrapper = styled.div`
 
   @media ${Breakpoint.Desktop} {
     max-width: 1280px;
-    margin: 0 auto;
   }
 `;

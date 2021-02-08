@@ -88,7 +88,6 @@ export const DesktopNavItems = styled.ul`
     flex-direction: row;
     margin-bottom: 0;
     margin-left: 60px;
-    list-style: none;
   }
 `;
 
@@ -153,7 +152,4 @@ export const DesktopMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media ${Breakpoint.Desktop} {
-    display: flex;
-  }
 `;

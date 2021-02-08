@@ -1,0 +1,12 @@
+{
+  "common": {
+    "actions": {
+      "sign-in": "Zaloguj się",
+      "sign-up": "Zarejestruj się"
+    },
+    "labels": {
+      "home": "Strona główna",
+      "add-recipe": "Dodaj przepis"
+    }
+  }
+}
