@@ -8,10 +8,10 @@ import { Routes } from "src/enums/routes.enum";
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { pathname } = useLocation();
-  const hideNavigaion = pathname === Routes.Login || pathname === Routes.Register;
+  const hideNavigation = pathname === Routes.Login || pathname === Routes.Register;
   return (
     <Wrapper>
-      {hideNavigaion ? null : <Nav />}
+      {hideNavigation ? null : <Nav />}
       {children}
     </Wrapper>
   );
