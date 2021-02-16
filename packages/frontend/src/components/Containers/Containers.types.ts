@@ -7,5 +7,5 @@ export type FlexDirectionType = "row" | "column";
 export type ContainerProps = {
   align?: alignTypes;
   justify?: justifyTypes;
-  direction: FlexDirectionType;
+  direction?: FlexDirectionType;
 };

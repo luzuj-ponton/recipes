@@ -4,7 +4,7 @@ import { Color } from "src/enums/color.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
 import styled, { css } from "styled-components";
-import { RedirectButtonProps } from "./common.types";
+import { ButtonProps, RedirectButtonProps } from "./common.types";
 
 export const RedirectButton = styled(Link)<RedirectButtonProps>`
   font-size: ${FontSize.Small};
@@ -13,7 +13,7 @@ export const RedirectButton = styled(Link)<RedirectButtonProps>`
   cursor: pointer;
   font-weight: ${FontWeight.Bold};
   text-align: center;
-  width: ${({ width }) => (width ? width : "auto")};
+  width: ${({ width }): string => (width ? `${width}px` : "auto")};
   ${({ variant }) => {
     switch (variant) {
       case "primary":
@@ -43,14 +43,14 @@ export const RedirectButton = styled(Link)<RedirectButtonProps>`
   }}
 `;
 
-export const Button = styled.button<RedirectButtonProps>`
+export const Button = styled.button<ButtonProps>`
   font-size: ${FontSize.Small};
   border-radius: 30px;
   padding: 10px 30px;
   cursor: pointer;
   margin: 20px 0;
   font-weight: ${FontWeight.Bold};
-  width: ${({ width }) => (width ? width : "100%")};
+  width: ${({ width }): string => (width ? `${width}px` : "100%")};
 
   ${({ variant }) => {
     switch (variant) {

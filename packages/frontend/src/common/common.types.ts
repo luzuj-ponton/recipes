@@ -1,6 +1,11 @@
 import { ButtonVariants } from "src/components/Button/Button.types";
 
-export type RedirectButtonProps = {
-  width?: string;
+export interface RedirectButtonProps {
   variant: ButtonVariants;
+  width?: number;
+};
+
+export interface ButtonProps {
+  variant: ButtonVariants;
+  width?: number;
 };

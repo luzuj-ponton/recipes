@@ -6,6 +6,6 @@ export const FormInput: React.FC<FormInputProps> = ({ label, ...rest }) => (
   <Wrapper direction="column">
     <Label htmlFor={label}>{label}</Label>
     <Input {...rest} />
-    <ErrorMsg>{rest.error && rest.touched && rest.error}</ErrorMsg>
+    <ErrorMsg>{rest.error && rest.touched}</ErrorMsg>
   </Wrapper>
 );

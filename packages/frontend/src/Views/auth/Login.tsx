@@ -15,7 +15,7 @@ import { Routes } from "src/enums/routes.enum";
 export const Login: React.FC = () => {
   const onSubmit = () => {};
   return (
-    <PageWrapper direction="row">
+    <PageWrapper>
       <AccountFormWrapper direction="column">
         <AccountVerificationForm
           onSubmit={onSubmit}
@@ -29,7 +29,7 @@ export const Login: React.FC = () => {
       <HeroContainer direction="column">
         <Header>Hello There, Join Us</Header>
         <Text>Enter your personal details and join the cooking community</Text>
-        <RedirectButton to={Routes.Register} variant="primary" width="150px">
+        <RedirectButton to={Routes.Register} variant="primary" width={150}>
           Sign up
         </RedirectButton>
       </HeroContainer>

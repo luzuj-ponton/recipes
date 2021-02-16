@@ -47,7 +47,7 @@ export const AccountVerificationForm: React.FC<IAccountVerificationFormProps> = 
                 />
               ),
             )}
-            <Button variant="secondary" type="submit" width="200px">
+            <Button variant="secondary" type="submit" width={200}>
               {buttonText}
             </Button>
           </StyledForm>

@@ -29,7 +29,7 @@ export const Register: React.FC = () => {
       <HeroContainer direction="column">
         <Header>Welcome Back</Header>
         <Text>Already signed up, enter your details and start cooking your first meal today</Text>
-        <RedirectButton to={Routes.Login} variant="primary" width="150px">
+        <RedirectButton to={Routes.Login} variant="primary" width={150}>
           Sign in
         </RedirectButton>
       </HeroContainer>
