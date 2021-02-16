@@ -1,4 +1,4 @@
-import { ButtonVariants } from "src/components/Button/Button.types";
+import { ButtonVariants } from "src/types/buttonVariant.types";
 
 export interface RedirectButtonProps {
   variant: ButtonVariants;
