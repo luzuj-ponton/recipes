@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 import {
   Wrapper,
   Hamburger,
@@ -14,18 +14,17 @@ import {
   DesktopMenu,
   DesktopNavItems,
 } from "./Nav.styled";
-import { DrawerMenu } from "../../components/DrawerMenu/DrawerMenu";
-import { Button } from "../../components/Button/Button";
+
 import { Routes } from "../../enums/routes.enum";
-import { useLocation } from "react-router-dom";
 import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
 import { RouteInfo } from "src/types/RouteInfo.types";
 import { routes } from "src/config/Routes";
+import { Button } from "src/common/common.styled";
+import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
   const { pathname } = useLocation();
 
   const toggleNav = () => {
