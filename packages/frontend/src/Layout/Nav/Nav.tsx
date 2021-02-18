@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 import {
   Wrapper,
   Hamburger,
@@ -15,26 +15,20 @@ import {
   DesktopMenu,
   DesktopNavItems,
 } from "./Nav.styled";
-import i18n from "i18next";
 
-import { DrawerMenu } from "../../components/DrawerMenu/DrawerMenu";
-import { Button } from "../../components/Button/Button";
 import { Routes } from "../../enums/routes.enum";
-import { useLocation } from "react-router-dom";
 import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
 import { RouteInfo } from "src/types/RouteInfo.types";
-// import { routes } from "src/config/Routes";
-
-const routes: RouteInfo[] = [
-  { text: i18n.t("common:labels.home"), path: Routes.Home },
-  { text: i18n.t("common:labels.add-recipe"), path: Routes.AddRecipe },
-];
+import { routes } from "src/config/Routes";
+import { Button } from "src/common/common.styled";
+import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { t } = useTranslation();
   const { pathname } = useLocation();
+
+  const { t } = useTranslation();
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
