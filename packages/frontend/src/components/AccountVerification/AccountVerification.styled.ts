@@ -52,14 +52,6 @@ export const Title = styled.h2`
   }
 `;
 
-//TEMPORARY STYLED-COMPONENT - MAKE REUSABLE
-export const Logo = styled(Link)`
-  font-size: ${FontSize.BigL};
-  color: ${Color.Red};
-  font-family: "Leckerli One", cursive;
-  margin-bottom: 20px;
-`;
-
 export const AccountFooter = styled.p`
   margin-top: 15px;
   @media ${Breakpoint.Desktop} {
@@ -79,7 +71,7 @@ export const Text = styled.p`
   font-weight: ${FontWeight.Light};
 `;
 
-export const StyledkLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: ${Color.Red};
   font-weight: ${FontWeight.Bold};
 `;

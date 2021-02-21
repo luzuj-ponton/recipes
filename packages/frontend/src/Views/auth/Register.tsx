@@ -3,14 +3,14 @@ import { AccountVerificationForm } from "src/components/AccountVerification/Acco
 import { Routes } from "src/enums/routes.enum";
 import {
   AccountFooter,
-  StyledkLink,
+  StyledLink,
   PageWrapper,
   HeroContainer,
   Text,
   Header,
   AccountFormWrapper,
 } from "src/components/AccountVerification/AccountVerification.styled";
-import { RedirectButton } from "src/common/common.styled";
+import { RedirectButton } from "../../common/ui/Button.styled";
 
 export const Register: React.FC = () => {
   const onSubmit = () => {};
@@ -23,7 +23,7 @@ export const Register: React.FC = () => {
           buttonText="Sign up"
         />
         <AccountFooter>
-          Already have account? <StyledkLink to={Routes.Login}>Sign in</StyledkLink>
+          Already have account? <StyledLink to={Routes.Login}>Sign in</StyledLink>
         </AccountFooter>
       </AccountFormWrapper>
       <HeroContainer direction="column">

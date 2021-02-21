@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -7,13 +7,13 @@ import {
   Hamburger,
   HamburgerInner,
   NavItem,
-  Logo,
-  StyledLink,
   HeaderStyled,
-  ButtonsWrapper,
+  ButtonsContainer,
+  RightPanel,
   SearchIcon,
   DesktopMenu,
   DesktopNavItems,
+  RedirectButtonStyled,
 } from "./Nav.styled";
 
 import { Routes } from "../../enums/routes.enum";
@@ -21,8 +21,9 @@ import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
 import { RouteInfo } from "src/types/RouteInfo.types";
 import { routes } from "src/config/Routes";
-import { Button } from "src/common/common.styled";
+import { RedirectButton } from "../../common/ui/Button.styled";
 import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
+import { Logo } from "../../common/ui/Logo.styled";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -42,22 +43,24 @@ export const Nav: React.FC = () => {
           <DesktopNavItems>
             {routes.map(({ path, text }: RouteInfo) => (
               <NavItem key={path}>
-                <StyledLink $isDesktop to={path} $isActive={path === pathname}>
+                <RedirectButton variant="quaternary" to={path} $isActive={path === pathname}>
                   {text}
-                </StyledLink>
+                </RedirectButton>
               </NavItem>
             ))}
           </DesktopNavItems>
         </DesktopMenu>
-        <ButtonsWrapper>
+        <RightPanel>
           <SearchIcon src={searchIcon} />
-          <StyledLink $isActive={pathname === Routes.Register} $isDesktop to={Routes.Login}>
-            Sign in
-          </StyledLink>
-          <Link to={Routes.Register}>
-            <Button variant="secondary">Sign up</Button>
-          </Link>
-        </ButtonsWrapper>
+          <ButtonsContainer>
+            <RedirectButton variant="quaternary" to={Routes.Login}>
+              {t("common:actions.sign-in")}
+            </RedirectButton>
+            <RedirectButton to={Routes.Register} variant="secondary">
+              {t("common:actions.sign-up")}
+            </RedirectButton>
+          </ButtonsContainer>
+        </RightPanel>
       </HeaderStyled>
       <ClickOutside onClickOutside={() => setIsOpen(false)}>
         <Hamburger onClick={toggleNav}>
@@ -66,14 +69,16 @@ export const Nav: React.FC = () => {
         <DrawerMenu isOpen={isOpen} onClick={toggleNav}>
           {routes.map(({ path, text }: RouteInfo) => (
             <NavItem key={path}>
-              <StyledLink onClick={toggleNav} to={path} $isActive={path === pathname}>
+              <RedirectButtonStyled
+                variant="tertiary"
+                onClick={toggleNav}
+                to={path}
+                $isActive={path === pathname}
+              >
                 {text}
-              </StyledLink>
+              </RedirectButtonStyled>
             </NavItem>
           ))}
-          <Link to={Routes.Register}>
-            <Button variant="primary">{t("common:actions.sign-up")}</Button>
-          </Link>
         </DrawerMenu>
       </ClickOutside>
     </Wrapper>

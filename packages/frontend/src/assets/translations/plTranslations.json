@@ -1,8 +1,8 @@
 {
   "common": {
     "actions": {
-      "sign-in": "Zaloguj się",
-      "sign-up": "Zarejestruj się"
+      "sign-in": "Logowanie",
+      "sign-up": "Rejestracja"
     },
     "labels": {
       "home": "Strona główna",
