@@ -13,7 +13,7 @@ import {
 import { RedirectButton } from "src/common/common.styled";
 import { IAuthCredentials } from "../../../../shared/src/types/auth.type";
 import { useMutation } from "react-query";
-import { registerUser } from "src/services/services";
+import { registerUser } from "src/services/authServices";
 
 export const Register: React.FC = () => {
   const mutation = useMutation(registerUser);
