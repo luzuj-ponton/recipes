@@ -11,9 +11,12 @@ import {
   AccountFormWrapper,
 } from "src/components/AccountVerification/AccountVerification.styled";
 import { RedirectButton } from "src/common/common.styled";
+import { useUserRegister } from "src/services/hooks/useUserRegister";
+import { IAuthUser } from "../../../../shared/src/types/auth.type";
 
 export const Register: React.FC = () => {
-  const onSubmit = () => {};
+  const mutation = useUserRegister();
+  const onSubmit = (variables: IAuthUser) => mutation.mutate(variables);
   return (
     <PageWrapper direction="row">
       <AccountFormWrapper direction="column">

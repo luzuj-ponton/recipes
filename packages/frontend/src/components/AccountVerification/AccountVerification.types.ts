@@ -1,5 +1,7 @@
+import { IAuthUser } from "../../../../shared/src/types/auth.type";
+
 export interface IAccountVerificationFormProps {
-  onSubmit(): void;
+  onSubmit(variables: IAuthUser): void;
   buttonText: string;
   titleText: string;
 }
