@@ -7,5 +7,4 @@ export interface IRecipe {
   prepTimeMin: number;
   servings: number;
   photoUrl: string;
-  __v: number;
 }
