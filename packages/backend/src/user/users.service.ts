@@ -11,10 +11,15 @@ import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { CreateUserDto } from './dto/createUserDto';
 import { User, UserDocument } from './schema/user.schema';
 import { LoginUserDto } from './dto/loginUserDto';
+import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from 'src/auth/types/jwt-payload.interface';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    private jwtService: JwtService,
+  ) {}
   async register(createUserDto: CreateUserDto): Promise<void> {
     const { email, password } = createUserDto;
     const user = new this.userModel();
@@ -38,12 +43,17 @@ export class UsersService {
     }
   }
 
-  async login(loginUserDto: LoginUserDto): Promise<void> {
-    const correctPass = await this.validateUserPassword(loginUserDto);
+  async login(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
+    const email = await this.validateUserPassword(loginUserDto);
 
-    if (!correctPass) {
+    if (!email) {
       throw new UnauthorizedException(Exceptions.InvalidCredentials);
     }
+
+    const payload: JwtPayload = { email };
+    const accessToken = await this.jwtService.sign(payload);
+
+    return { accessToken };
   }
 
   private async validateUserPassword(
