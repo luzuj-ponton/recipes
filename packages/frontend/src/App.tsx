@@ -5,11 +5,9 @@ import GlobalStyle from "./styles/GlobalStyle";
 
 export const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <GlobalStyle />
-        <Routing />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <GlobalStyle />
+      <Routing />
+    </BrowserRouter>
   );
 };
