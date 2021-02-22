@@ -10,7 +10,6 @@ type ButtonVariants = "primary" | "secondary" | "tertiary" | "quaternary";
 interface StyledButtonProps {
   width?: number;
   variant: ButtonVariants;
-  isActive?: boolean;
   $isActive?: boolean;
 }
 
@@ -53,25 +52,23 @@ const ButtonStyles = {
   `,
 };
 
-const getSharedStyles = (width?: number) => `
+const getSharedStyles = (width?: number) => css`
   font-size: ${FontSize.SmallS};
   border-radius: 30px;
   padding: 10px 30px;
   cursor: pointer;
   text-align: center;
   transition: 0.2s;
-  width: ${width}px;
+  width: ${width ? `${width}px` : "auto"};
 `;
 
 export const RedirectButton = styled(Link)<StyledButtonProps>`
   ${({ width }) => getSharedStyles(width)};
   ${({ variant }) => ButtonStyles[variant]}
   display: block;
-  color: ${({ $isActive }) => $isActive && `${Color.Red}`};
 `;
 
 export const Button = styled.button<StyledButtonProps>`
   ${({ width }) => getSharedStyles(width)};
   ${({ variant }) => ButtonStyles[variant]}
-  width: ${({ width }): string => (width ? `${width}px` : "auto")};
 `;

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Color } from "../../enums/color.enum";
-import { HamburgerInnerProps } from "./Nav.types";
+import { HamburgerInnerProps, RedirectButtonStyledProps } from "./Nav.types";
 import svg from "react-inlinesvg";
 import { Breakpoint } from "../../enums/breakpoint.enum";
 import { RedirectButton } from "../../common/ui/Button.styled";
@@ -72,8 +72,8 @@ export const NavItem = styled.li`
   text-align: center;
 `;
 
-export const RedirectButtonStyled = styled(RedirectButton)`
-  color: ${({ $isActive }) => $isActive && `${Color.LightGrey}`};
+export const RedirectButtonStyled = styled(RedirectButton)<RedirectButtonStyledProps>`
+  color: ${({ $activeColor }) => ($activeColor ? `${$activeColor}` : null)};
 `;
 
 export const DesktopNavItems = styled.ul`

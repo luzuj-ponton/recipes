@@ -24,6 +24,7 @@ import { routes } from "src/config/Routes";
 import { RedirectButton } from "../../common/ui/Button.styled";
 import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
 import { Logo } from "../../common/ui/Logo.styled";
+import { Color } from "../../enums/color.enum";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -43,9 +44,13 @@ export const Nav: React.FC = () => {
           <DesktopNavItems>
             {routes.map(({ path, text }: RouteInfo) => (
               <NavItem key={path}>
-                <RedirectButton variant="quaternary" to={path} $isActive={path === pathname}>
+                <RedirectButtonStyled
+                  $activeColor={path === pathname ? `${Color.Red}` : null}
+                  variant="quaternary"
+                  to={path}
+                >
                   {text}
-                </RedirectButton>
+                </RedirectButtonStyled>
               </NavItem>
             ))}
           </DesktopNavItems>
@@ -73,7 +78,7 @@ export const Nav: React.FC = () => {
                 variant="tertiary"
                 onClick={toggleNav}
                 to={path}
-                $isActive={path === pathname}
+                $activeColor={path === pathname ? `${Color.LightGrey}` : null}
               >
                 {text}
               </RedirectButtonStyled>
