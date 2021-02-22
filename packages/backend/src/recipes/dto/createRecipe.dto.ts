@@ -29,4 +29,7 @@ export class RecipeDto {
 
   @IsArray()
   steps: Step[];
+
+  @IsString()
+  creator: string;
 }

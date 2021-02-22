@@ -56,6 +56,10 @@ export class UsersService {
     return { accessToken };
   }
 
+  async findById(id: string): Promise<User | null> {
+    return await this.userModel.findById(id);
+  }
+
   private async validateUserPassword(
     loginUserDto: LoginUserDto,
   ): Promise<string | null> {
