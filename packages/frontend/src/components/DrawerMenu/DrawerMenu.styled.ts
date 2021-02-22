@@ -86,3 +86,7 @@ export const SocialIcon = styled(svg)`
     transform: scale(1.1);
   }
 `;
+
+export const StyledLink = styled.a`
+  display: block;
+`;
