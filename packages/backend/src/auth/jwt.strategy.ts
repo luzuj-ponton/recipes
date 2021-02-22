@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { PassportStrategy } from '@nestjs/passport';
 import { Model } from 'mongoose';
 import { Strategy, ExtractJwt, VerifiedCallback } from 'passport-jwt';
+import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User, UserDocument } from '../user/schema/user.schema';
 import { JwtPayload } from './types/jwt-payload.interface';
 
@@ -19,7 +20,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   async validate(payload: JwtPayload, done: VerifiedCallback) {
     const user = await this.userModel.findOne({ email: payload.email });
     if (!user) {
-      return done(new HttpException('siema', HttpStatus.UNAUTHORIZED), false);
+      return done(
+        new HttpException(
+          Exceptions.InvalidCredentials,
+          HttpStatus.UNAUTHORIZED,
+        ),
+        false,
+      );
     }
 
     return done(null, user);
