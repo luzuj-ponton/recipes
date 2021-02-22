@@ -3,22 +3,15 @@ import styled from "styled-components";
 import { NavStyledProps } from "./DrawerMenu.types";
 import { Color } from "../../enums/color.enum";
 import { Breakpoint } from "../../enums/breakpoint.enum";
-import { Link } from "react-router-dom";
 import { rgba } from "polished";
-import { FontSize } from "../../enums/fontsize.enum";
 import svg from "react-inlinesvg";
+import { RedirectButton } from "../../common/ui/Button.styled";
 
 export const LogoContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
-`;
-
-export const Logo = styled(Link)`
-  font-size: ${FontSize.MediumL};
-  color: ${Color.White};
-  font-family: "Leckerli One", cursive;
 `;
 
 export const CloseIcon = styled(svg)`
@@ -52,7 +45,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
     width: 270px;
   }
 
-  @media ${Breakpoint.Tablet} {
+  @media ${Breakpoint.Desktop} {
     display: none;
   }
 `;
@@ -62,6 +55,15 @@ export const NavItems = styled.ul`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+`;
+
+export const RedirectButtonStyled = styled(RedirectButton)`
+  margin-bottom: 20px;
+  width: 220px;
+  align-self: center;
+  @media ${Breakpoint.Tablet} {
+    width: 100%;
+  }
 `;
 
 export const SocialsWrapper = styled.div`
@@ -83,4 +85,8 @@ export const SocialIcon = styled(svg)`
     fill: ${Color.White};
     transform: scale(1.1);
   }
+`;
+
+export const StyledLink = styled.a`
+  display: block;
 `;

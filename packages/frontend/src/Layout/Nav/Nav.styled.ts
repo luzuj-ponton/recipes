@@ -1,12 +1,9 @@
 import styled, { css } from "styled-components";
 import { Color } from "../../enums/color.enum";
-import { FontSize } from "../../enums/fontsize.enum";
-import { HamburgerInnerProps, LinkProps } from "./Nav.types";
+import { HamburgerInnerProps, RedirectButtonStyledProps } from "./Nav.types";
 import svg from "react-inlinesvg";
-import { Link } from "react-router-dom";
-import { rgba } from "polished";
 import { Breakpoint } from "../../enums/breakpoint.enum";
-import { FontWeight } from "../../enums/fontweight.enum";
+import { RedirectButton } from "../../common/ui/Button.styled";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,7 +18,7 @@ export const Hamburger = styled.div`
   cursor: pointer;
   margin-right: 10px;
 
-  @media ${Breakpoint.Tablet} {
+  @media ${Breakpoint.Desktop} {
     display: none;
   }
 `;
@@ -71,47 +68,21 @@ export const HamburgerInner = styled.span<HamburgerInnerProps>`
     `}
 `;
 
-export const Logo = styled(Link)`
-  font-size: ${FontSize.MediumL};
-  color: ${Color.Red};
-  font-family: "Leckerli One", cursive;
-`;
-
 export const NavItem = styled.li`
   text-align: center;
 `;
 
+export const RedirectButtonStyled = styled(RedirectButton)<RedirectButtonStyledProps>`
+  color: ${({ $activeColor }) => ($activeColor ? `${$activeColor}` : null)};
+`;
+
 export const DesktopNavItems = styled.ul`
   display: none;
-  @media ${Breakpoint.Tablet} {
+  @media ${Breakpoint.Desktop} {
     display: flex;
     flex-direction: row;
     margin-bottom: 0;
     margin-left: 60px;
-    list-style: none;
-  }
-`;
-
-export const StyledLink = styled(Link)<LinkProps>`
-  display: ${({ $isDesktop }) => ($isDesktop ? "none" : "block")};
-  font-size: ${FontSize.Medium};
-  color: ${({ $isActive }) => ($isActive ? `${Color.White}` : `${rgba(`${Color.White}`, 0.4)}`)};
-  padding: 8px 0;
-  transition: color 0.2s;
-  :hover {
-    color: ${Color.White};
-  }
-
-  @media ${Breakpoint.Tablet} {
-    display: block;
-    color: ${({ $isActive }) => ($isActive ? `${Color.Red}` : Color.Grey)};
-    font-weight: ${FontWeight.Medium};
-    font-size: ${FontSize.SmallS};
-    padding: 15px;
-
-    :hover {
-      color: ${Color.Red};
-    }
   }
 `;
 
@@ -123,37 +94,42 @@ export const HeaderStyled = styled.header`
   margin: 40px 0;
   padding-left: 16px;
 
-  @media ${Breakpoint.Tablet} {
+  @media ${Breakpoint.Desktop} {
     padding-left: 0;
   }
 `;
 
-export const ButtonsWrapper = styled.div`
+export const ButtonsContainer = styled.div`
+  display: none;
+  @media ${Breakpoint.Tablet} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const RightPanel = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ${StyledLink} {
-    margin-right: 14px;
-  }
 `;
 
 export const SearchIcon = styled(svg)`
   width: 20px;
   height: 20px;
-  margin-right: 30px;
+  margin-right: 0;
   fill: ${Color.Grey};
   transition: 0.2s;
   cursor: pointer;
   :hover {
     fill: ${Color.Black};
   }
+  @media ${Breakpoint.Tablet} {
+    margin-right: 20px;
+  }
 `;
 export const DesktopMenu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media ${Breakpoint.Desktop} {
-    display: flex;
-  }
 `;

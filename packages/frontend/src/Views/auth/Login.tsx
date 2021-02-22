@@ -1,9 +1,9 @@
 import * as React from "react";
-import { RedirectButton } from "src/common/common.styled";
+import { RedirectButton } from "../../common/ui/Button.styled";
 import {
   PageWrapper,
   AccountFooter,
-  StyledkLink,
+  StyledLink,
   Header,
   HeroContainer,
   Text,
@@ -23,7 +23,7 @@ export const Login: React.FC = () => {
           buttonText="Sign in"
         />
         <AccountFooter>
-          Not registered yet? <StyledkLink to={Routes.Register}>Sign up</StyledkLink>
+          Not registered yet? <StyledLink to={Routes.Register}>Sign up</StyledLink>
         </AccountFooter>
       </AccountFormWrapper>
       <HeroContainer direction="column">
