@@ -1,1 +1,3 @@
-export interface NewsletterProps {}
+export interface NewsLetterValues {
+  email: string;
+}

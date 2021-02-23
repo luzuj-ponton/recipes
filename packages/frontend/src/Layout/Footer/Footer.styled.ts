@@ -74,6 +74,8 @@ export const FooterItemsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
   @media ${Breakpoint.MobileS} {
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,10 +83,10 @@ export const FooterItemsWrapper = styled.div`
 `;
 
 export const FooterItem = styled.div`
-  flex-basis: 50%;
+  width: 50%;
   padding-bottom: 10px;
   @media ${Breakpoint.Tablet} {
-    flex-basis: 25%;
+    width: 25%;
   }
 `;
 

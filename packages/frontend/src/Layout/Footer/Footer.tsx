@@ -18,6 +18,31 @@ import linkedinIcon from "../../assets/images/linkedin.svg";
 import facebookIcon from "../../assets/images/facebook.svg";
 import githubIcon from "../../assets/images/github.svg";
 
+//placeholder
+
+const footerItems = [
+  {
+    text1: "Presentations",
+    text2: "Professionals",
+    text3: "Stores",
+  },
+  {
+    text1: "Webinars",
+    text2: "Workshops",
+    text3: "Local Meetups",
+  },
+  {
+    text1: "Our Initiatives",
+    text2: "Giving Back",
+    text3: "Communities",
+  },
+  {
+    text1: "Contact Form",
+    text2: "Work With Us",
+    text3: "Visit Us",
+  },
+];
+
 export const Footer = () => {
   return (
     <Wrapper>
@@ -51,26 +76,15 @@ export const Footer = () => {
         </IconsWrapper>
       </SocialsWrapper>
       <FooterItemsWrapper>
-        <FooterItem>
-          <Text>Presentations</Text>
-          <Text>Professionals</Text>
-          <Text>Stores</Text>
-        </FooterItem>
-        <FooterItem>
-          <Text>Presentations</Text>
-          <Text>Professionals</Text>
-          <Text>Stores</Text>
-        </FooterItem>
-        <FooterItem>
-          <Text>Presentations</Text>
-          <Text>Professionals</Text>
-          <Text>Stores</Text>
-        </FooterItem>
-        <FooterItem>
-          <Text>Presentations</Text>
-          <Text>Professionals</Text>
-          <Text>Stores</Text>
-        </FooterItem>
+        {footerItems.map((el) => {
+          return (
+            <FooterItem key={el.text1}>
+              <Text>{el.text1}</Text>
+              <Text>{el.text2}</Text>
+              <Text>{el.text3}</Text>
+            </FooterItem>
+          );
+        })}
       </FooterItemsWrapper>
       <Copyright>
         Made by{" "}
