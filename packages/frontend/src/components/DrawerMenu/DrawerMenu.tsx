@@ -4,10 +4,9 @@ import {
   CloseIcon,
   LogoContainer,
   NavStyled,
-  SocialsWrapper,
-  SocialIcon,
   NavItems,
   RedirectButtonStyled,
+  SocialsWrapper,
   StyledLink,
 } from "./DrawerMenu.styled";
 import closeIcon from "../../assets/images/close.svg";
@@ -17,6 +16,7 @@ import githubIcon from "../../assets/images/github.svg";
 import { DrawerMenuProps } from "./DrawerMenu.types";
 import { useTranslation } from "react-i18next";
 import { Logo } from "../../common/ui/Logo.styled";
+import { SocialIcon } from "../../common/ui/Socials.styled";
 
 export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClick }) => {
   const { t } = useTranslation();
@@ -40,7 +40,6 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClic
         <StyledLink href="https://www.linkedin.com/feed/" rel="noopener noreferrer" target="_blank">
           <SocialIcon src={linkedinIcon} />
         </StyledLink>
-
         <StyledLink>
           <SocialIcon src={facebookIcon} />
         </StyledLink>

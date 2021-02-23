@@ -57,36 +57,27 @@ export const NavItems = styled.ul`
   margin-bottom: 40px;
 `;
 
-export const RedirectButtonStyled = styled(RedirectButton)`
-  margin-bottom: 20px;
-  width: 220px;
-  align-self: center;
-  @media ${Breakpoint.Tablet} {
-    width: 100%;
-  }
-`;
-
 export const SocialsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
-  margin-top: 40px;
   align-self: center;
-`;
-
-export const SocialIcon = styled(svg)`
-  width: 20px;
-  height: 20px;
-  fill: ${rgba(`${Color.White}`, 0.4)};
-  transition: 0.2s;
-  cursor: pointer;
-  :hover {
-    fill: ${Color.White};
-    transform: scale(1.1);
-  }
 `;
 
 export const StyledLink = styled.a`
   display: block;
+  cursor: pointer;
+  margin: 0 3px;
+`;
+
+export const RedirectButtonStyled = styled(RedirectButton)`
+  margin-bottom: 20px;
+  width: 220px;
+  align-self: center;
+  :last-of-type {
+    margin-bottom: 40px;
+  }
+  @media ${Breakpoint.Tablet} {
+    width: 100%;
+  }
 `;
