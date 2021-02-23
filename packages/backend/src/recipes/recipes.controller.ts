@@ -6,12 +6,14 @@ import {
   Param,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 
 import { Recipe } from './schema/recipe.shema';
 import { RecipeDto } from './dto/createRecipe.dto';
 import { RecipesService } from './recipes.service';
 import { RecipesParams } from './recipes.types';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('recipes')
 export class RecipesController {
@@ -37,8 +39,15 @@ export class RecipesController {
     return await this.recipesService.deleteById(params.id);
   }
 
+  @UseGuards(AuthGuard())
   @Post()
   async createRecipe(@Body() recipeDto: RecipeDto): Promise<Recipe> {
     return await this.recipesService.create(recipeDto);
+  }
+
+  @UseGuards(AuthGuard())
+  @Get('user/:id')
+  async getUserRecipes(@Param() user: { id: string }): Promise<Recipe[]> {
+    return await this.recipesService.getUserRecipes(user.id);
   }
 }
