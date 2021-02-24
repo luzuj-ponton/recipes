@@ -6,6 +6,7 @@ import { Breakpoint } from "../../enums/breakpoint.enum";
 import { rgba } from "polished";
 import svg from "react-inlinesvg";
 import { RedirectButton } from "../../common/ui/Button.styled";
+import { zIndex } from "src/enums/zIndex.enum";
 
 export const LogoContainer = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
   padding: 20px;
   background-color: ${Color.Black};
   position: fixed;
+  z-index: ${zIndex.DrawerMenu};
   transform: ${({ isOpen }) => (isOpen ? "transform: translateX(0)" : "translateX(100%)")};
   top: 0;
   right: 0;
@@ -70,6 +72,16 @@ export const StyledLink = styled.a`
   margin: 0 3px;
 `;
 
+export const StyledIcon = styled(svg)`
+  width: 20px;
+  height: 20px;
+  fill: ${rgba(`${Color.White}`, 0.4)};
+  transition: 0.2s;
+  :hover {
+    fill: ${Color.White};
+    transform: scale(1.1);
+  }
+`;
 export const RedirectButtonStyled = styled(RedirectButton)`
   margin-bottom: 20px;
   width: 220px;

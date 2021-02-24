@@ -5,6 +5,7 @@ import { Login } from "src/Views/auth/Login";
 import { Register } from "src/Views/auth/Register";
 import { Routes } from "../enums/routes.enum";
 import { Layout } from "../Layout/Layout";
+import { Home } from "../Views/Home/Home";
 
 export const Routing: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ export const Routing: React.FC = () => {
         <Route path={Routes.AddRecipe} />
         <Route path={Routes.EditRecipe} />
         <Route path={Routes.Recipe} />
-        <Route path={Routes.Home} />
+        <Route exact path={Routes.Home} component={Home} />
       </Layout>
     </Switch>
   );

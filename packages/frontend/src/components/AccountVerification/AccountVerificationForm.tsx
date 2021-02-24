@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Routes } from "src/enums/routes.enum";
-import { StyledForm, Title } from "./AccountVerification.styled";
+import { StyledForm, Title, IconsWrapper } from "./AccountVerification.styled";
 import { Formik, FormikProps } from "formik";
 import { FormInput } from "src/components/FormInput/FormInput";
 import { accountValidationSchema } from "./validationSchema";
@@ -11,6 +11,8 @@ import {
 import { Button } from "../../common/ui/Button.styled";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { Logo } from "../../common/ui/Logo.styled";
+import { socials } from "../../components/SocialIcon/config";
+import { SocialIcon } from "../SocialIcon/SocialIcon";
 
 const initialValues: AccountVerificationsValues = {
   email: "",
@@ -32,6 +34,12 @@ export const AccountVerificationForm: React.FC<IAccountVerificationFormProps> = 
       <Logo $isBig to={Routes.Home}>
         Bochen
       </Logo>
+      <IconsWrapper direction="row">
+        {socials.map((el) => {
+          return <SocialIcon key={el.src} color={el.color} src={el.src} link={el.link} />;
+        })}
+      </IconsWrapper>
+
       <Title>{titleText}</Title>
       <Formik
         initialValues={initialValues}

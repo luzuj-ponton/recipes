@@ -1,6 +1,5 @@
 import { Color } from "src/enums/color.enum";
-import styled, { css } from "styled-components";
-import { SocialIcon } from "src/common/ui/Socials.styled";
+import styled from "styled-components";
 import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
 import { Breakpoint } from "src/enums/breakpoint.enum";
@@ -24,50 +23,6 @@ export const SocialsWrapper = styled.div`
 
 export const IconsWrapper = styled.div`
   display: flex;
-`;
-
-const setIconColor = (color?: string) => css`
-  border-color: ${color ? `${color}` : "black"};
-  fill: ${color ? `${color}` : "black"};
-`;
-
-const setBgColor = (color?: string) => css`
-  background-color: ${color ? `${color}` : "black"};
-`;
-
-interface IconWrapProps {
-  color?: string;
-}
-
-export const IconWrap = styled.a<IconWrapProps>`
-  display: block;
-  width: 34px;
-  height: 34px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid red;
-  border-radius: 50%;
-  transition: 0.2s;
-  margin: 0 6px;
-  ${({ color }) => setIconColor(color)};
-
-  :hover {
-    ${({ color }) => setBgColor(color)};
-    border-color: transparent;
-
-    ${SocialIcon} {
-      fill: ${Color.White};
-      transform: scale(1);
-    }
-  }
-
-  ${SocialIcon} {
-    width: 16px;
-    height: 16px;
-    ${({ color }) => setIconColor(color)};
-    border-color: transparent;
-  }
 `;
 
 export const FooterItemsWrapper = styled.div`

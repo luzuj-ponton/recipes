@@ -16,7 +16,9 @@ export const PageWrapper = styled(FlexContainer)`
     max-width: 1280px;
   }
 `;
-
+export const IconsWrapper = styled(FlexContainer)`
+  margin-top: 20px;
+`;
 export const StyledForm = styled(Form)`
   width: 90%;
   height: 100%;

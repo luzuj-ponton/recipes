@@ -8,6 +8,7 @@ import {
   RedirectButtonStyled,
   SocialsWrapper,
   StyledLink,
+  StyledIcon,
 } from "./DrawerMenu.styled";
 import closeIcon from "../../assets/images/close.svg";
 import linkedinIcon from "../../assets/images/linkedin.svg";
@@ -16,7 +17,6 @@ import githubIcon from "../../assets/images/github.svg";
 import { DrawerMenuProps } from "./DrawerMenu.types";
 import { useTranslation } from "react-i18next";
 import { Logo } from "../../common/ui/Logo.styled";
-import { SocialIcon } from "../../common/ui/Socials.styled";
 
 export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClick }) => {
   const { t } = useTranslation();
@@ -38,13 +38,13 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClic
       </RedirectButtonStyled>
       <SocialsWrapper>
         <StyledLink href="https://www.linkedin.com/feed/" rel="noopener noreferrer" target="_blank">
-          <SocialIcon src={linkedinIcon} />
+          <StyledIcon src={linkedinIcon} />
         </StyledLink>
         <StyledLink>
-          <SocialIcon src={facebookIcon} />
+          <StyledIcon src={facebookIcon} />
         </StyledLink>
         <StyledLink>
-          <SocialIcon src={githubIcon} />
+          <StyledIcon src={githubIcon} />
         </StyledLink>
       </SocialsWrapper>
     </NavStyled>

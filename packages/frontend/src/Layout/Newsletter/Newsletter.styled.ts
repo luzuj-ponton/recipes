@@ -23,9 +23,12 @@ export const ContentContainer = styled.div`
 
 export const TitleText = styled.h2`
   color: ${Color.White};
-  font-size: ${FontSize.MediumL};
+  font-size: ${FontSize.MediumS};
   font-weight: ${FontWeight.SemiBold};
   text-align: center;
+  @media ${Breakpoint.Tablet} {
+    font-size: ${FontSize.MediumL};
+  }
   @media ${Breakpoint.Desktop} {
     font-size: ${FontSize.Big};
   }
