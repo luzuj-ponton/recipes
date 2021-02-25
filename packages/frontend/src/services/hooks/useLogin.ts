@@ -9,10 +9,10 @@ import { loginUser } from "../authServices";
 
 export const useLogin = () => {
   const history = useHistory();
-  const [, setValue] = useLocalStorage(StorageKeys.Token);
+  const [, setToken] = useLocalStorage(StorageKeys.Token);
   const mutation = useMutation(loginUser, {
     onSuccess: ({ data }) => {
-      setValue(StorageKeys.Token, data.accessToken);
+      setToken(data.accessToken);
       configureApi(data.accessToken);
       history.push(Routes.Home);
     },

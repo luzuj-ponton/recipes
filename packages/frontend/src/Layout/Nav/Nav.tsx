@@ -26,17 +26,21 @@ import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
 import { Logo } from "../../common/ui/Logo.styled";
 import { Color } from "../../enums/color.enum";
 import { StorageKeys } from "src/enums/storageKeys.enum";
-import { useLocalStorage } from "src/hooks/useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { configureApi } from "../../services";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
-  const [storedValue, setValue] = useLocalStorage(StorageKeys.Token);
+  const [token, setToken] = useLocalStorage(StorageKeys.Token);
   const { t } = useTranslation();
 
   const toggleNav = () => setIsOpen(!isOpen);
 
-  const onLogoutClick = () => setValue(StorageKeys.Token, null);
+  const onLogoutClick = () => {
+    configureApi(null);
+    setToken(null);
+  };
 
   return (
     <Wrapper>
@@ -59,7 +63,7 @@ export const Nav: React.FC = () => {
         </DesktopMenu>
         <RightPanel>
           <SearchIcon src={searchIcon} />
-          {!storedValue ? (
+          {!token ? (
             <ButtonsContainer>
               <RedirectButton variant="quaternary" to={Routes.Login}>
                 {t("common:actions.sign-in")}

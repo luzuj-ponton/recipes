@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StorageKeys } from "src/enums/storageKeys.enum";
 
 export function useLocalStorage<T>(
   key: StorageKeys,
   initialValue?: T,
-): [T, (key: StorageKeys, value: T) => void] {
+): [T, React.Dispatch<React.SetStateAction<T>>] {
   const readValue = () => {
     try {
       const item = window.localStorage.getItem(key);
@@ -16,14 +16,9 @@ export function useLocalStorage<T>(
 
   const [storedValue, setStoredValue] = useState<T>(readValue);
 
-  const setValue = (newKey: StorageKeys, value: T) => {
-    try {
-      window.localStorage.setItem(newKey, JSON.stringify(value));
-      setStoredValue(value);
-    } catch (error) {
-      console.warn(`Error setting localStorage key “${newKey}”:`, error);
-    }
-  };
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(storedValue));
+  }, [initialValue, key, storedValue]);
 
-  return [storedValue, setValue];
+  return [storedValue, setStoredValue];
 }
