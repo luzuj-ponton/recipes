@@ -14,6 +14,8 @@ import { RecipeDto } from './dto/createRecipe.dto';
 import { RecipesService } from './recipes.service';
 import { RecipesParams } from './recipes.types';
 import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from '../decorators/auth-user.decorator';
+import { User } from '../user/schema/user.schema';
 
 @Controller('recipes')
 export class RecipesController {
@@ -30,7 +32,11 @@ export class RecipesController {
   }
 
   @Patch(':id')
-  async updateOne(@Body() recipeDto: RecipeDto): Promise<Recipe | null> {
+  async updateOne(
+    @GetUser() user: User,
+    @Body() recipeDto: RecipeDto,
+  ): Promise<Recipe | null> {
+    console.log(user);
     return await this.recipesService.editById(recipeDto);
   }
 
