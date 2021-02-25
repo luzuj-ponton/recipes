@@ -5,3 +5,6 @@ import { ApiEndpoints } from "src/enums/apiEndpoints.enum";
 
 export const registerUser = (variables: IAuthCredentials): Promise<AxiosResponse<any>> =>
   apiService.post(ApiEndpoints.Register, variables);
+
+export const loginUser = (variables: IAuthCredentials): Promise<AxiosResponse<any>> =>
+  apiService.post(ApiEndpoints.Login, variables);
