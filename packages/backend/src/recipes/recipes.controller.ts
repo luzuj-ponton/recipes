@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 
@@ -16,6 +17,7 @@ import { RecipesParams } from './recipes.types';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../decorators/auth-user.decorator';
 import { User } from '../user/schema/user.schema';
+import { GetAllQueryOptions } from './types/getAllqueryOptions.type';
 
 @Controller('recipes')
 export class RecipesController {
@@ -28,8 +30,8 @@ export class RecipesController {
   }
 
   @Get()
-  async getAll(): Promise<Recipe[]> {
-    return await this.recipesService.getAll();
+  async getAll(@Query() queries: GetAllQueryOptions): Promise<Recipe[]> {
+    return await this.recipesService.getAll(queries);
   }
 
   @Get(':id')
