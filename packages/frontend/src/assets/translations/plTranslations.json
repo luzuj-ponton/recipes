@@ -2,11 +2,21 @@
   "common": {
     "actions": {
       "sign-in": "Logowanie",
-      "sign-up": "Rejestracja"
+      "sign-up": "Rejestracja",
+      "logout": "Wyloguj"
     },
     "labels": {
       "home": "Strona główna",
-      "add-recipe": "Dodaj przepis"
+      "add-recipe": "Dodaj przepis",
+      "already-have-account": "Posiadasz już konto?",
+      "sign-up-box-text": "Jesteś już zarejestrowany? Zaloguj się i przygotuj swój pierwszy posiłek",
+      "welcome-back": "Witamy ponownie",
+      "create-account": "Stwórz konto",
+      "not-registered": "Nie jesteś zarejestrowany?",
+      "hello-there": "Cześć, Dołącz do nas",
+      "sign-in-box-text": "Podaj swój email i dołącz do społeczności kucharzy",
+      "log-in-account": "Zaloguj się do konta",
+      "password": "Hasło"
     }
   }
 }

@@ -11,26 +11,31 @@ import {
 } from "src/components/AccountVerification/AccountVerification.styled";
 import { AccountVerificationForm } from "src/components/AccountVerification/AccountVerificationForm";
 import { Routes } from "src/enums/routes.enum";
+import { useLogin } from "src/services/hooks/useLogin";
+import { useTranslation } from "react-i18next";
 
 export const Login: React.FC = () => {
-  const onSubmit = () => {};
+  const { t } = useTranslation();
+  const userLogin = useLogin();
+
   return (
     <PageWrapper>
       <AccountFormWrapper direction="column">
         <AccountVerificationForm
-          onSubmit={onSubmit}
-          titleText="Log in to your account"
-          buttonText="Sign in"
+          onSubmit={userLogin}
+          titleText={t("common:labels.log-in-account")}
+          buttonText={t("common:actions.sign-in")}
         />
         <AccountFooter>
-          Not registered yet? <StyledLink to={Routes.Register}>Sign up</StyledLink>
+          {t("common:labels.not-registered")}
+          <StyledLink to={Routes.Register}>{t("common:actions.sign-up")}</StyledLink>
         </AccountFooter>
       </AccountFormWrapper>
       <HeroContainer direction="column">
-        <Header>Hello There, Join Us</Header>
-        <Text>Enter your personal details and join the cooking community</Text>
+        <Header>{t("common:labels.hello-there")}</Header>
+        <Text>{t("common:labels.sign-in-box-text")}</Text>
         <RedirectButton to={Routes.Register} variant="primary" width={150}>
-          Sign up
+          {t("common:actions.sign-up")}
         </RedirectButton>
       </HeroContainer>
     </PageWrapper>

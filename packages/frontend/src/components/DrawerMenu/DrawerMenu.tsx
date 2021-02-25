@@ -40,7 +40,6 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClic
         <StyledLink href="https://www.linkedin.com/feed/" rel="noopener noreferrer" target="_blank">
           <SocialIcon src={linkedinIcon} />
         </StyledLink>
-
         <StyledLink>
           <SocialIcon src={facebookIcon} />
         </StyledLink>

@@ -2,11 +2,21 @@
   "common": {
     "actions": {
       "sign-in": "Sign in",
-      "sign-up": "Sign up"
+      "sign-up": "Sign up",
+      "logout": "Logout"
     },
     "labels": {
       "home": "Home",
-      "add-recipe": "Add recipe"
+      "add-recipe": "Add recipe",
+      "welcome-back": "Welcome Back",
+      "already-have-account": "Already have account?",
+      "sign-up-box-text": "Already signed up, enter your details and start cooking your first meal today",
+      "create-account": "Create an Account",
+      "not-registered": "Not registered yet?",
+      "hello-there": "Hello There, Join Us",
+      "sign-in-box-text": "Enter your personal details and join the cooking community",
+      "log-in-account": "Log in to your account",
+      "password": "Password"
     }
   }
 }
