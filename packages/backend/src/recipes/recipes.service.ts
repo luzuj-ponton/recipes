@@ -25,8 +25,17 @@ export class RecipesService {
     return await this.recipeModel.findById(id);
   }
 
-  async editById(recipeDto: RecipeDto): Promise<Recipe | null> {
-    return await this.recipeModel.updateOne(recipeDto);
+  async editById(recipeDto: RecipeDto, id: string): Promise<void> {
+    const recipe = await this.recipeModel.findOne({ _id: id });
+
+    if (!recipe) {
+      throw new HttpException(
+        Exceptions.RecipeDoesntExist,
+        HttpStatus.UNAUTHORIZED,
+      );
+    }
+
+    await recipe.updateOne(recipeDto);
   }
 
   async deleteById(id: string): Promise<Recipe | null> {
