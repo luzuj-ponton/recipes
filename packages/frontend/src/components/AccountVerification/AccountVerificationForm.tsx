@@ -11,7 +11,7 @@ import {
 import { Button } from "../../common/ui/Button.styled";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { Logo } from "../../common/ui/Logo.styled";
-
+import i18n from "../../i18n";
 const initialValues: AccountVerificationsValues = {
   email: "",
   password: "",
@@ -19,7 +19,7 @@ const initialValues: AccountVerificationsValues = {
 
 const accountFormData = [
   { label: "Email", key: "email" },
-  { label: "Password", key: "password" },
+  { label: i18n.t("common:labels.password"), key: "password" },
 ];
 
 export const AccountVerificationForm: React.FC<IAccountVerificationFormProps> = ({

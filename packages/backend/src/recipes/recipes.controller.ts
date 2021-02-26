@@ -17,7 +17,7 @@ import { RecipesParams } from './recipes.types';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../decorators/auth-user.decorator';
 import { User } from '../user/schema/user.schema';
-import { GetAllQueryOptions } from './types/getAllqueryOptions.type';
+import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
 
 @Controller('recipes')
 export class RecipesController {

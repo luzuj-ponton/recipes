@@ -21,19 +21,25 @@ import { ClickOutside } from "../../components/ClickOutside/ClickOutside";
 import searchIcon from "../../assets/images/loupe.svg";
 import { RouteInfo } from "src/types/RouteInfo.types";
 import { routes } from "src/config/Routes";
-import { RedirectButton } from "../../common/ui/Button.styled";
+import { Button, RedirectButton } from "../../common/ui/Button.styled";
 import { DrawerMenu } from "src/components/DrawerMenu/DrawerMenu";
 import { Logo } from "../../common/ui/Logo.styled";
 import { Color } from "../../enums/color.enum";
+import { StorageKeys } from "src/enums/storageKeys.enum";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { configureApi } from "../../services";
 
 export const Nav: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
-
+  const [token, setToken] = useLocalStorage(StorageKeys.Token);
   const { t } = useTranslation();
 
-  const toggleNav = () => {
-    setIsOpen(!isOpen);
+  const toggleNav = () => setIsOpen(!isOpen);
+
+  const onLogoutClick = () => {
+    configureApi(null);
+    setToken(null);
   };
 
   return (
@@ -57,14 +63,20 @@ export const Nav: React.FC = () => {
         </DesktopMenu>
         <RightPanel>
           <SearchIcon src={searchIcon} />
-          <ButtonsContainer>
-            <RedirectButton variant="quaternary" to={Routes.Login}>
-              {t("common:actions.sign-in")}
-            </RedirectButton>
-            <RedirectButton to={Routes.Register} variant="secondary">
-              {t("common:actions.sign-up")}
-            </RedirectButton>
-          </ButtonsContainer>
+          {!token ? (
+            <ButtonsContainer>
+              <RedirectButton variant="quaternary" to={Routes.Login}>
+                {t("common:actions.sign-in")}
+              </RedirectButton>
+              <RedirectButton to={Routes.Register} variant="secondary">
+                {t("common:actions.sign-up")}
+              </RedirectButton>
+            </ButtonsContainer>
+          ) : (
+            <Button onClick={onLogoutClick} variant="secondary">
+              {t("common:actions.logout")}
+            </Button>
+          )}
         </RightPanel>
       </HeaderStyled>
       <ClickOutside onClickOutside={() => setIsOpen(false)}>

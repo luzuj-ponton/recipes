@@ -5,7 +5,7 @@ import { Recipe, RecipeDocument } from './schema/recipe.shema';
 import { RecipeDto } from './dto/createRecipe.dto';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
-import { GetAllQueryOptions } from './types/getAllqueryOptions.type';
+import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
 
 @Injectable()
 export class RecipesService {

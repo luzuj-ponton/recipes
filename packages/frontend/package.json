@@ -17,6 +17,7 @@
     "polished": "^4.1.0",
     "react": "^17.0.1",
     "react-app-rewired": "^2.1.8",
+    "react-collapse": "^5.1.0",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.5",
     "react-inlinesvg": "^2.2.2",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-collapse": "^5.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.7",
     "ts-loader": "^8.0.14"
