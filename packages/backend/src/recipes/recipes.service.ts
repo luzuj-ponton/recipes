@@ -3,19 +3,18 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Recipe, RecipeDocument } from './schema/recipe.shema';
 import { RecipeDto } from './dto/createRecipe.dto';
-import { UsersService } from '../user/users.service';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
+import { User } from '../user/schema/user.schema';
+import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
 
 @Injectable()
 export class RecipesService {
   constructor(
     @InjectModel(Recipe.name) private recipeModel: Model<RecipeDocument>,
-    private userService: UsersService,
   ) {}
 
-  async create(createRecipeDto: RecipeDto): Promise<Recipe> {
+  async create(createRecipeDto: RecipeDto, user: User): Promise<Recipe> {
     const createdRecipe = new this.recipeModel(createRecipeDto);
-    const user = await this.userService.findById(createRecipeDto.creator);
     user?.recipes.push(createdRecipe);
     user?.save();
     return await createdRecipe.save();
@@ -25,28 +24,60 @@ export class RecipesService {
     return await this.recipeModel.findById(id);
   }
 
-  async editById(recipeDto: RecipeDto): Promise<Recipe | null> {
-    return await this.recipeModel.updateOne(recipeDto);
-  }
+  async editById(recipeDto: RecipeDto, id: string): Promise<void> {
+    const recipe = await this.recipeModel.findOne({ _id: id });
 
-  async deleteById(id: string): Promise<Recipe | null> {
-    return await this.recipeModel.findByIdAndDelete(id);
-  }
-
-  async getAll(): Promise<Recipe[]> {
-    return await this.recipeModel.find();
-  }
-
-  async getUserRecipes(id: string): Promise<Recipe[]> {
-    const user = await this.userService.findById(id);
-
-    if (!user) {
+    if (!recipe) {
       throw new HttpException(
-        Exceptions.UserDosentExists,
+        Exceptions.RecipeDoesntExist,
         HttpStatus.UNAUTHORIZED,
       );
     }
 
+    await recipe.updateOne(recipeDto);
+  }
+
+  async deleteById(id: string, user: User): Promise<Recipe | null> {
+    const recipesCopy: Recipe[] = user.recipes || [];
+    const recipeIndex = recipesCopy.findIndex(
+      (recipe: Recipe) => String(recipe) === id,
+    );
+    if (recipeIndex !== -1) {
+      recipesCopy.splice(recipeIndex, 1);
+      user.recipes = recipesCopy;
+      user.save();
+    } else {
+      throw new HttpException(
+        Exceptions.RecipeDoesntExist,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    return await this.recipeModel.findByIdAndDelete(id);
+  }
+
+  async getAll({
+    offset,
+    limit,
+    fields,
+    text,
+  }: GetAllQueryOptions): Promise<Recipe[]> {
+    if (fields) {
+      return await this.recipeModel
+        .find({ [fields]: { $regex: String(text), $options: 'i' } })
+        .skip(Number(offset))
+        .limit(Number(limit))
+        .exec();
+    } else {
+      return await this.recipeModel
+        .find()
+        .skip(Number(offset))
+        .limit(Number(limit))
+        .exec();
+    }
+  }
+
+  async getUserRecipes(user: User): Promise<Recipe[]> {
     const recipes: Recipe[] = await user
       .populate('recipes')
       .execPopulate()
