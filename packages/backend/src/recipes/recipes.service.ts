@@ -5,6 +5,7 @@ import { Recipe, RecipeDocument } from './schema/recipe.shema';
 import { RecipeDto } from './dto/createRecipe.dto';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
+import { GetAllQueryOptions } from './types/getAllqueryOptions.type';
 
 @Injectable()
 export class RecipesService {
@@ -55,8 +56,25 @@ export class RecipesService {
     return await this.recipeModel.findByIdAndDelete(id);
   }
 
-  async getAll(): Promise<Recipe[]> {
-    return await this.recipeModel.find();
+  async getAll({
+    offset,
+    limit,
+    fields,
+    text,
+  }: GetAllQueryOptions): Promise<Recipe[]> {
+    if (fields) {
+      return await this.recipeModel
+        .find({ [fields]: { $regex: String(text), $options: 'i' } })
+        .skip(Number(offset))
+        .limit(Number(limit))
+        .exec();
+    } else {
+      return await this.recipeModel
+        .find()
+        .skip(Number(offset))
+        .limit(Number(limit))
+        .exec();
+    }
   }
 
   async getUserRecipes(user: User): Promise<Recipe[]> {
