@@ -24,7 +24,10 @@ export class Recipe {
   photoUrl: string;
 
   @Prop()
-  ingredients: Array<string>;
+  ingredients: string[];
+
+  @Prop()
+  tags: string[];
 
   @Prop({ type: Types.ObjectId, ref: 'User' })
   creator: Types.ObjectId;
