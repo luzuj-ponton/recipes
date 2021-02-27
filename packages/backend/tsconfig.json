@@ -12,6 +12,10 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "@exceptions": ["../shared/src/enums/exceptions.enum.ts"]
+    }
   },
 }
