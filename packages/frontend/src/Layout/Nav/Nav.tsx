@@ -73,9 +73,11 @@ export const Nav: React.FC = () => {
               </RedirectButton>
             </ButtonsContainer>
           ) : (
-            <Button onClick={onLogoutClick} variant="secondary">
-              {t("common:actions.logout")}
-            </Button>
+            <ButtonsContainer>
+              <Button onClick={onLogoutClick} variant="secondary">
+                {t("common:actions.logout")}
+              </Button>
+            </ButtonsContainer>
           )}
         </RightPanel>
       </HeaderStyled>

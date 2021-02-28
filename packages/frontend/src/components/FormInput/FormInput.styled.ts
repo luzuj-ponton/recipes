@@ -13,6 +13,7 @@ export const Wrapper = styled(FlexContainer)`
 export const Label = styled.label`
   font-weight: ${FontWeight.Light};
   margin-bottom: 3px;
+  text-align: center;
 `;
 
 export const Input = styled.input`

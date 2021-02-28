@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Route, Switch } from "react-router-dom";
+import { AddRecipe } from "src/Views/AddRecipe/AddRecipe";
 import { Login } from "src/Views/auth/Login";
 import { Register } from "src/Views/auth/Register";
 
@@ -11,7 +12,7 @@ export const Routing: React.FC = () => {
   return (
     <Layout>
       <Switch>
-        <Route path={Routes.AddRecipe} />
+        <Route path={Routes.AddRecipe} component={AddRecipe} />
         <Route path={Routes.EditRecipe} />
         <Route path={Routes.Recipe} />
         <Route path={Routes.Login} component={Login} />
