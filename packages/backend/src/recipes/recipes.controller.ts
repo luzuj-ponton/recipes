@@ -18,6 +18,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../decorators/auth-user.decorator';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
+import { SingleRecipeData } from './types/singleRecipeData.type';
 
 @Controller('recipes')
 export class RecipesController {
@@ -35,17 +36,18 @@ export class RecipesController {
   }
 
   @Get(':id')
-  async getOne(@Param() params: RecipesParams): Promise<Recipe | null> {
+  async getOne(@Param() params: RecipesParams): Promise<SingleRecipeData> {
     return await this.recipesService.findById(params.id);
   }
 
   @UseGuards(AuthGuard())
   @Patch(':id')
   async updateOne(
+    @GetUser() user: User,
     @Body() recipeDto: RecipeDto,
     @Param() params: { id: string },
   ): Promise<void> {
-    return await this.recipesService.editById(recipeDto, params.id);
+    return await this.recipesService.editById(recipeDto, params.id, user);
   }
 
   @UseGuards(AuthGuard())

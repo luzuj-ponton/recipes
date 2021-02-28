@@ -6,11 +6,15 @@ import { RecipeDto } from './dto/createRecipe.dto';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
+import { RatingService } from '../rating/rating.service';
+import { RecipeRating } from 'src/types/recipeRating.type';
+import { SingleRecipeData } from './types/singleRecipeData.type';
 
 @Injectable()
 export class RecipesService {
   constructor(
     @InjectModel(Recipe.name) private recipeModel: Model<RecipeDocument>,
+    private ratingService: RatingService,
   ) {}
 
   async create(createRecipeDto: RecipeDto, user: User): Promise<Recipe> {
@@ -20,11 +24,30 @@ export class RecipesService {
     return await createdRecipe.save();
   }
 
-  async findById(id: string): Promise<Recipe | null> {
-    return await this.recipeModel.findById(id);
+  async findById(id: string): Promise<SingleRecipeData> {
+    const recipe = await this.recipeModel.findById(id);
+    if (!recipe) {
+      throw new HttpException(
+        Exceptions.RecipeDoesntExist,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    const rating: RecipeRating = await this.ratingService.getRecipeRating(id);
+
+    return await { recipe, rating };
   }
 
-  async editById(recipeDto: RecipeDto, id: string): Promise<void> {
+  async editById(recipeDto: RecipeDto, id: string, user: User): Promise<void> {
+    const recipeIndex = user.recipes.findIndex(
+      (recipe: Recipe) => String(recipe) === id,
+    );
+    if (recipeIndex === -1) {
+      throw new HttpException(
+        Exceptions.UserDoesntHaveRecipe,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     const recipe = await this.recipeModel.findOne({ _id: id });
 
     if (!recipe) {
