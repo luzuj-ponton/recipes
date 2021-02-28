@@ -18,5 +18,6 @@ import { RatingModule } from '../rating/rating.module';
   ],
   controllers: [RecipesController],
   providers: [RecipesService],
+  exports: [RecipesService],
 })
 export class RecipesModule {}

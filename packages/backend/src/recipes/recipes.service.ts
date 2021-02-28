@@ -6,15 +6,11 @@ import { RecipeDto } from './dto/createRecipe.dto';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
-import { RatingService } from '../rating/rating.service';
-import { RecipeRating } from 'src/types/recipeRating.type';
-import { SingleRecipeData } from './types/singleRecipeData.type';
 
 @Injectable()
 export class RecipesService {
   constructor(
     @InjectModel(Recipe.name) private recipeModel: Model<RecipeDocument>,
-    private ratingService: RatingService,
   ) {}
 
   async create(createRecipeDto: RecipeDto, user: User): Promise<Recipe> {
@@ -24,7 +20,7 @@ export class RecipesService {
     return await createdRecipe.save();
   }
 
-  async findById(id: string): Promise<SingleRecipeData> {
+  async findById(id: string): Promise<RecipeDocument> {
     const recipe = await this.recipeModel.findById(id);
     if (!recipe) {
       throw new HttpException(
@@ -32,9 +28,8 @@ export class RecipesService {
         HttpStatus.BAD_REQUEST,
       );
     }
-    const rating: RecipeRating = await this.ratingService.getRecipeRating(id);
 
-    return await { recipe, rating };
+    return await recipe;
   }
 
   async editById(recipeDto: RecipeDto, id: string, user: User): Promise<void> {
@@ -48,16 +43,8 @@ export class RecipesService {
       );
     }
 
-    const recipe = await this.recipeModel.findOne({ _id: id });
-
-    if (!recipe) {
-      throw new HttpException(
-        Exceptions.RecipeDoesntExist,
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
-
-    await recipe.updateOne(recipeDto);
+    const recipe = await this.findById(id);
+    return await recipe.updateOne(recipeDto);
   }
 
   async deleteById(id: string, user: User): Promise<Recipe | null> {

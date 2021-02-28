@@ -6,24 +6,17 @@ import { Rating, RatingDocument } from './schema/rating.schema';
 import { Exceptions } from '@recipes/shared/src/enums/exceptions.enum';
 import { RecipeRating } from '../types/recipeRating.type';
 import { User } from '../user/schema/user.schema';
-import { Recipe, RecipeDocument } from '../recipes/schema/recipe.shema';
+import { RecipesService } from '../recipes/recipes.service';
 
 @Injectable()
 export class RatingService {
   constructor(
     @InjectModel(Rating.name) private ratingModel: Model<RatingDocument>,
-    @InjectModel(Recipe.name) private recipeModel: Model<RecipeDocument>,
+    private recipesService: RecipesService,
   ) {}
 
   async saveRating(ratingDto: RatingDto, user: User) {
-    const recipe = await this.recipeModel.findOne({ _id: ratingDto.recipeId });
-
-    if (!recipe) {
-      throw new HttpException(
-        Exceptions.RecipeDoesntExist,
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+    const recipe = await this.recipesService.findById(ratingDto.recipeId);
 
     const existingRating = await this.ratingModel.findOne({
       userId: user.id,

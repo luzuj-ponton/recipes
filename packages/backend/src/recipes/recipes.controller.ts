@@ -18,7 +18,6 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../decorators/auth-user.decorator';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
-import { SingleRecipeData } from './types/singleRecipeData.type';
 
 @Controller('recipes')
 export class RecipesController {
@@ -36,7 +35,7 @@ export class RecipesController {
   }
 
   @Get(':id')
-  async getOne(@Param() params: RecipesParams): Promise<SingleRecipeData> {
+  async getOne(@Param() params: RecipesParams): Promise<Recipe> {
     return await this.recipesService.findById(params.id);
   }
 
