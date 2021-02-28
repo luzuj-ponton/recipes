@@ -6,6 +6,7 @@ import { Form } from "formik";
 import { FontWeight } from "src/enums/fontweight.enum";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { Breakpoint } from "src/enums/breakpoint.enum";
+import { MaxWidth } from "src/enums/maxWidth.enum";
 
 export const PageWrapper = styled(FlexContainer)`
   height: 100vh;
@@ -13,7 +14,7 @@ export const PageWrapper = styled(FlexContainer)`
   padding: 0 40px;
 
   @media ${Breakpoint.Desktop} {
-    max-width: 1280px;
+    max-width: ${MaxWidth.Desktop};
   }
 `;
 export const IconsWrapper = styled(FlexContainer)`

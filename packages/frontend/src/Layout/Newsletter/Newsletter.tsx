@@ -10,31 +10,31 @@ import {
 } from "./Newsletter.styled";
 import { Formik, FormikProps } from "formik";
 import { NewsLetterValues } from "./Newsletter.types";
+import { useTranslation } from "react-i18next";
 
-const initialValues = {
+const initialValues: NewsLetterValues = {
   email: "",
 };
 
-export const Newsletter = () => {
-  const onSubmit = () => {
-    console.log("ok");
-  };
+export const Newsletter: React.FC = () => {
+  const onSubmit = () => {};
+
+  const { t } = useTranslation();
+
   return (
     <Wrapper>
       <ContentContainer>
-        <TitleText>
-          Be the first to know about the latest deals, receive new trending recipes & more!
-        </TitleText>
+        <TitleText>{t("common:labels.be-the-first")}</TitleText>
         <Formik initialValues={initialValues} onSubmit={onSubmit}>
           {(props: FormikProps<NewsLetterValues>): JSX.Element => (
             <StyledForm>
               <StyledInput
-                placeholder="Email Address"
+                placeholder={t("common:labels.email-placeholder")}
                 {...props.getFieldMeta}
                 {...props.getFieldProps}
               />
               <StyledButton variant="primary" type="submit">
-                Subscribe
+                {t("common:actions.subscribe")}
               </StyledButton>
             </StyledForm>
           )}

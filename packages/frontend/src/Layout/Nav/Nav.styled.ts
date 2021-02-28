@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  z-index: ${zIndex.DrawerMenu};
+  z-index: ${zIndex.DesktopMenu};
 `;
 
 export const Hamburger = styled.div`

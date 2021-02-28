@@ -2,11 +2,30 @@
   "common": {
     "actions": {
       "sign-in": "Logowanie",
-      "sign-up": "Rejestracja"
+      "sign-up": "Rejestracja",
+      "subscribe": "Subskrybuj"
     },
     "labels": {
       "home": "Strona główna",
-      "add-recipe": "Dodaj przepis"
+      "add-recipe": "Dodaj przepis",
+      "presentations": "Prezentacje",
+      "professionals": "Profesjonaliści",
+      "stores": "Sklepy",
+      "webinars": "Webinaria",
+      "workshops": "Warsztaty",
+      "local-meetups": "Lokalne spotkania",
+      "our-initiatives": "Nasze inicjatywy",
+      "giving-back": "Oddawanie",
+      "communities": "Społeczności",
+      "contact-form": "Formularz kontaktowy",
+      "work-with-us": "Pracuj z nami",
+      "visit-us": "Odwiedź nas",
+      "email-placeholder": "Adres e-mail",
+      "be-the-first": "Dowiedz się jako pierwszy o najnowszych okazjach, otrzymuj nowe popularne przepisy i nie tylko!",
+      "heading-title": "Wybieraj spośród tysiąca przepisów",
+      "heading-text": "Odpowiednio zintegruj rozsądną technicznie wartość ze skalowalnymi pośrednikami informacyjnymi, negocjuj zrównoważone strategiczne obszary tematyczne",
+      "heading-signup": "Zarejestruj się już teraz"
+
     }
   }
 }

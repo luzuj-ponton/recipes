@@ -2,11 +2,29 @@
   "common": {
     "actions": {
       "sign-in": "Sign in",
-      "sign-up": "Sign up"
+      "sign-up": "Sign up",
+      "subscribe": "Subscribe"
     },
     "labels": {
       "home": "Home",
-      "add-recipe": "Add recipe"
+      "add-recipe": "Add recipe",
+      "presentations": "presentations",
+      "professionals": "professionals",
+      "stores": "stores",
+      "webinars": "webinars",
+      "workshops": "workshops",
+      "local-meetups": "Local meetups",
+      "our-initiatives": "Our initiatives",
+      "giving-back": "Giving back",
+      "communities": "Communities",
+      "contact-form": "Contact form",
+      "work-with-us": "Work With Us",
+      "visit-us": "Visit Us",
+      "email-placeholder": "Email Address",
+      "be-the-first": "Be the first to know about the latest deals, receive new trending recipes & more!",
+      "heading-text": "Appropriately integrate technically sound value with scalable infomediaries negotiate sustainable strategic theme areas",
+      "heading-title": "Choose from thousands of recipes",
+      "heading-signup": "Sign up today"
     }
   }
 }

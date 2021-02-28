@@ -5,10 +5,10 @@ import {
   LogoContainer,
   NavStyled,
   NavItems,
-  RedirectButtonStyled,
+  StyledRedirectButton,
   SocialsWrapper,
   StyledLink,
-  StyledIcon,
+  Icon,
 } from "./DrawerMenu.styled";
 import closeIcon from "../../assets/images/close.svg";
 import linkedinIcon from "../../assets/images/linkedin.svg";
@@ -30,21 +30,21 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children, isOpen, onClic
         <CloseIcon src={closeIcon} onClick={onClick} />
       </LogoContainer>
       <NavItems>{children}</NavItems>
-      <RedirectButtonStyled to={Routes.Register} variant="primary">
+      <StyledRedirectButton to={Routes.Register} variant="primary">
         {t("common:actions.sign-up")}
-      </RedirectButtonStyled>
-      <RedirectButtonStyled to={Routes.Login} variant="primary">
+      </StyledRedirectButton>
+      <StyledRedirectButton to={Routes.Login} variant="primary">
         {t("common:actions.sign-in")}
-      </RedirectButtonStyled>
+      </StyledRedirectButton>
       <SocialsWrapper>
         <StyledLink href="https://www.linkedin.com/feed/" rel="noopener noreferrer" target="_blank">
-          <StyledIcon src={linkedinIcon} />
+          <Icon src={linkedinIcon} />
         </StyledLink>
         <StyledLink>
-          <StyledIcon src={facebookIcon} />
+          <Icon src={facebookIcon} />
         </StyledLink>
         <StyledLink>
-          <StyledIcon src={githubIcon} />
+          <Icon src={githubIcon} />
         </StyledLink>
       </SocialsWrapper>
     </NavStyled>

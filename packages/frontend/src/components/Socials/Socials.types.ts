@@ -4,8 +4,7 @@ export interface SocialsStyledProps {
   color?: Color;
 }
 
-export interface SocialIconProps {
-  color?: Color;
+export interface SocialIconProps extends SocialsStyledProps {
   link: string;
   src: string;
 }

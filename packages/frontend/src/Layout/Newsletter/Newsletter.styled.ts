@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   background-color: ${Color.Red};
   border-radius: 20px;
 `;
-export const ContentContainer = styled.div`
+export const ContentContainer = styled.section`
   padding: 30px;
   margin: 0 auto;
   max-width: 900px;
@@ -23,7 +23,7 @@ export const ContentContainer = styled.div`
 
 export const TitleText = styled.h2`
   color: ${Color.White};
-  font-size: ${FontSize.MediumS};
+  font-size: ${FontSize.Small};
   font-weight: ${FontWeight.SemiBold};
   text-align: center;
   @media ${Breakpoint.Tablet} {
@@ -46,6 +46,7 @@ export const StyledForm = styled(Form)`
 `;
 
 export const StyledButton = styled(Button)`
+  align-self: flex-start;
   font-size: ${FontSize.SmallM};
   padding: 14px 36px;
   background-color: ${Color.Yellow};

@@ -34,7 +34,7 @@ export const NavStyled = styled.nav<NavStyledProps>`
   background-color: ${Color.Black};
   position: fixed;
   z-index: ${zIndex.DrawerMenu};
-  transform: ${({ isOpen }) => (isOpen ? "transform: translateX(0)" : "translateX(100%)")};
+  transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
   top: 0;
   right: 0;
   width: 100%;
@@ -72,7 +72,7 @@ export const StyledLink = styled.a`
   margin: 0 3px;
 `;
 
-export const StyledIcon = styled(svg)`
+export const Icon = styled(svg)`
   width: 20px;
   height: 20px;
   fill: ${rgba(`${Color.White}`, 0.4)};
@@ -82,7 +82,7 @@ export const StyledIcon = styled(svg)`
     transform: scale(1.1);
   }
 `;
-export const RedirectButtonStyled = styled(RedirectButton)`
+export const StyledRedirectButton = styled(RedirectButton)`
   margin-bottom: 20px;
   width: 220px;
   align-self: center;

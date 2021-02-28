@@ -72,7 +72,7 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-export const RedirectButtonStyled = styled(RedirectButton)`
+export const StyledRedirectButton = styled(RedirectButton)`
   padding: 0;
   text-align: left;
   color: ${Color.White};

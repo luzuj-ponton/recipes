@@ -1,24 +1,25 @@
 import { FooterInfo } from "../../types/FooterInfo.types";
+import i18n from "../../i18n";
 
 export const footerItems: FooterInfo[] = [
   {
-    text1: "Presentations",
-    text2: "Professionals",
-    text3: "Stores",
+    text1: i18n.t("common:labels.presentations"),
+    text2: i18n.t("common:labels.professionals"),
+    text3: i18n.t("common:labels.stores"),
   },
   {
-    text1: "Webinars",
-    text2: "Workshops",
-    text3: "Local Meetups",
+    text1: i18n.t("common:labels.webinars"),
+    text2: i18n.t("common:labels.workshops"),
+    text3: i18n.t("common:labels.local-meetups"),
   },
   {
-    text1: "Our Initiatives",
-    text2: "Giving Back",
-    text3: "Communities",
+    text1: i18n.t("common:labels.our-initiatives"),
+    text2: i18n.t("common:labels.giving-back"),
+    text3: i18n.t("common:labels.communities"),
   },
   {
-    text1: "Contact Form",
-    text2: "Work With Us",
-    text3: "Visit Us",
+    text1: i18n.t("common:labels.contact-form"),
+    text2: i18n.t("common:labels."),
+    text3: i18n.t("common:labels."),
   },
 ];

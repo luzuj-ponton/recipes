@@ -4,20 +4,17 @@ import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
 import { Breakpoint } from "src/enums/breakpoint.enum";
 import { rgba } from "polished";
+import { FlexContainer } from "../../components/Containers/Containers.styles";
 
 export const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   margin: 30px 0;
   width: 100%;
-  /* background-color: ${Color.LightGrey}; */
 `;
 
-export const SocialsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const SocialsWrapper = styled(FlexContainer)`
   margin-bottom: 20px;
-  flex-direction: row;
   justify-content: space-between;
 `;
 
@@ -25,16 +22,9 @@ export const IconsWrapper = styled.div`
   display: flex;
 `;
 
-export const FooterItemsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const FooterItemsWrapper = styled(FlexContainer)`
   margin-bottom: 20px;
-  flex-direction: row;
   flex-wrap: wrap;
-  @media ${Breakpoint.MobileS} {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
 `;
 
 export const FooterItem = styled.div`
@@ -53,6 +43,7 @@ export const Copyright = styled.p`
 `;
 
 export const StyledLink = styled.a`
+  margin: 0 4px;
   color: ${rgba(`${Color.Grey}`, 0.7)};
   font-weight: ${FontWeight.SemiBold};
 `;

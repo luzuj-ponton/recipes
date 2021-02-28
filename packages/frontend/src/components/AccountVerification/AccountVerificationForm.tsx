@@ -11,8 +11,7 @@ import {
 import { Button } from "../../common/ui/Button.styled";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { Logo } from "../../common/ui/Logo.styled";
-import { socials } from "../../components/SocialIcon/config";
-import { SocialIcon } from "../SocialIcon/SocialIcon";
+import { Socials } from "../Socials/Socials";
 
 const initialValues: AccountVerificationsValues = {
   email: "",
@@ -35,9 +34,7 @@ export const AccountVerificationForm: React.FC<IAccountVerificationFormProps> = 
         Bochen
       </Logo>
       <IconsWrapper direction="row">
-        {socials.map((el) => {
-          return <SocialIcon key={el.src} color={el.color} src={el.src} link={el.link} />;
-        })}
+        <Socials />
       </IconsWrapper>
 
       <Title>{titleText}</Title>
