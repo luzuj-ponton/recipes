@@ -2,12 +2,17 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@recipes/*": ["./src/*", "./build/*"]
+    },
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
+  
   "include": [
     "packages",
     "./"
