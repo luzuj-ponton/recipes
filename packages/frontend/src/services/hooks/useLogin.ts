@@ -4,7 +4,7 @@ import { Routes } from "src/enums/routes.enum";
 import { StorageKeys } from "src/enums/storageKeys.enum";
 import { useLocalStorage } from "src/hooks/useLocalStorage";
 import { configureApi } from "..";
-import { IAuthCredentials } from "../../../../shared/src/types/auth.type";
+import { IAuthCredentials } from "@shared/src/types/auth.type";
 import { loginUser } from "../authServices";
 
 export const useLogin = () => {

@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const Wrapper = styled.section`
   display: none;
   @media ${Breakpoint.Desktop} {
-    height: 100%;
+    min-height: 450px;
     width: 100%;
     border-radius: 20px;
     border: 2px solid ${Color.Red};

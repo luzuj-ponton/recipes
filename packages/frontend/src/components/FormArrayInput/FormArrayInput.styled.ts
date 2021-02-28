@@ -5,6 +5,7 @@ import { FontWeight } from "src/enums/fontweight.enum";
 import styled from "styled-components";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { darken } from "polished";
+import { FontSize } from "src/enums/fontsize.enum";
 
 export const InputGroupWrapper = styled(FlexContainer)`
   min-width: 90%;
@@ -14,7 +15,9 @@ export const InputGroupWrapper = styled(FlexContainer)`
     max-width: 90%;
   }
 `;
-export const InputWrapper = styled(FlexContainer)`
+export const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   margin: 5px 15px 15px;
   @media ${Breakpoint.Desktop} {
@@ -35,10 +38,16 @@ export const Input = styled(Field)`
   }
 `;
 
+export const LabelWrapper = styled.div`
+  width: 100%;
+`;
+
 export const Label = styled.label`
-  font-weight: ${FontWeight.Light};
-  margin-bottom: 3px;
+  display: inline-block;
+  width: 125px;
+  margin-bottom: 10px;
   margin-right: 15px;
+  font-size: ${FontSize.MediumS};
 `;
 
 export const DeleteItemButton = styled.button`

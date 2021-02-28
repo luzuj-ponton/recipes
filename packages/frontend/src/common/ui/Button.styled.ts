@@ -71,4 +71,7 @@ export const RedirectButton = styled(Link)<StyledButtonProps>`
 export const Button = styled.button<StyledButtonProps>`
   ${({ width }) => getSharedStyles(width)};
   ${({ variant }) => ButtonStyles[variant]}
+  :disabled {
+    background-color: ${Color.Grey};
+  }
 `;

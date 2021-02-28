@@ -12,4 +12,12 @@ export interface IRecipe {
   servings: number;
   photoUrl: string;
   steps: Step[];
+  tags: string[];
+}
+
+export interface IInnerTags {
+  innerTags: {
+    title: string;
+    tags: { title: string }[];
+  }[];
 }
