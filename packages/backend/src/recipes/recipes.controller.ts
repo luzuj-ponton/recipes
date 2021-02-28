@@ -35,17 +35,18 @@ export class RecipesController {
   }
 
   @Get(':id')
-  async getOne(@Param() params: RecipesParams): Promise<Recipe | null> {
+  async getOne(@Param() params: RecipesParams): Promise<Recipe> {
     return await this.recipesService.findById(params.id);
   }
 
   @UseGuards(AuthGuard())
   @Patch(':id')
   async updateOne(
+    @GetUser() user: User,
     @Body() recipeDto: RecipeDto,
     @Param() params: { id: string },
   ): Promise<void> {
-    return await this.recipesService.editById(recipeDto, params.id);
+    return await this.recipesService.editById(recipeDto, params.id, user);
   }
 
   @UseGuards(AuthGuard())

@@ -20,21 +20,31 @@ export class RecipesService {
     return await createdRecipe.save();
   }
 
-  async findById(id: string): Promise<Recipe | null> {
-    return await this.recipeModel.findById(id);
-  }
-
-  async editById(recipeDto: RecipeDto, id: string): Promise<void> {
-    const recipe = await this.recipeModel.findOne({ _id: id });
-
+  async findById(id: string): Promise<RecipeDocument> {
+    const recipe = await this.recipeModel.findById(id);
     if (!recipe) {
       throw new HttpException(
         Exceptions.RecipeDoesntExist,
-        HttpStatus.UNAUTHORIZED,
+        HttpStatus.BAD_REQUEST,
       );
     }
 
-    await recipe.updateOne(recipeDto);
+    return await recipe;
+  }
+
+  async editById(recipeDto: RecipeDto, id: string, user: User): Promise<void> {
+    const recipeIndex = user.recipes.findIndex(
+      (recipe: Recipe) => String(recipe) === id,
+    );
+    if (recipeIndex === -1) {
+      throw new HttpException(
+        Exceptions.RecipeDoesntBelongToUser,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    const recipe = await this.findById(id);
+    return await recipe.updateOne(recipeDto);
   }
 
   async deleteById(id: string, user: User): Promise<Recipe | null> {

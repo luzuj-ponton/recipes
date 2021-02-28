@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
+import { RecipeRating } from '../../types/recipeRating.type';
 
 export type RecipeDocument = Recipe & Document;
 
@@ -28,6 +29,9 @@ export class Recipe {
 
   @Prop()
   tags: string[];
+
+  @Prop({ type: Object })
+  rating: RecipeRating;
 
   @Prop({ type: Types.ObjectId, ref: 'User' })
   creator: Types.ObjectId;

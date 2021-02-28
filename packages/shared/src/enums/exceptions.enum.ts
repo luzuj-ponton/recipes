@@ -3,5 +3,7 @@ export enum Exceptions {
   InvalidCredentials = "Invalid credentials",
   UserDosentExists = "User doesn't exist",
   RecipeDoesntExist = "Recipe doesn't exist",
-  Unauthorized = 'Unauthorized'
+  Unauthorized = 'Unauthorized',
+  CannotAsingExistingRatingToNewUser = 'Cannot asing existing rating to new user',
+  RecipeDoesntBelongToUser = "Provided user doesn't have such a recipe"
 }

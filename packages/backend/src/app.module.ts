@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { RecipesModule } from './recipes/recipes.module';
+import { RatingModule } from './rating/rating.module';
 import { TagsModule } from './tags/tags.module';
 
 @Module({
@@ -15,6 +16,7 @@ import { TagsModule } from './tags/tags.module';
       envFilePath: '.env',
     }),
     MongooseModule.forRoot(process.env.DB_URL as string),
+    RatingModule,
     TagsModule,
   ],
   controllers: [AppController],
