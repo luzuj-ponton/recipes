@@ -43,7 +43,7 @@ export class RecipesService {
     );
     if (recipeIndex === -1) {
       throw new HttpException(
-        Exceptions.UserDoesntHaveRecipe,
+        Exceptions.RecipeDoesntBelongToUser,
         HttpStatus.BAD_REQUEST,
       );
     }

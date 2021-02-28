@@ -16,7 +16,7 @@ export class RatingService {
   ) {}
 
   async saveRating(ratingDto: RatingDto, user: User) {
-    const recipe = await this.recipeModel.findOne({ id: ratingDto.recipeId });
+    const recipe = await this.recipeModel.findOne({ _id: ratingDto.recipeId });
 
     if (!recipe) {
       throw new HttpException(
@@ -31,7 +31,11 @@ export class RatingService {
 
     if (existingRating) {
       if (existingRating.userId === user.id) {
-        return await existingRating.updateOne(ratingDto);
+        await existingRating.updateOne(ratingDto);
+        const newRating = await this.getRecipeRating(recipe.id);
+        recipe.rating = newRating;
+        await recipe.save();
+        return;
       } else {
         throw new HttpException(
           Exceptions.CannotAsingExistingRatingToNewUser,
@@ -41,7 +45,10 @@ export class RatingService {
     }
 
     const rating = new this.ratingModel({ ...ratingDto, userId: user.id });
-    return await rating.save();
+    const newRating = await rating.save();
+    recipe.rating = await this.getRecipeRating(recipe.id);
+    recipe.save();
+    return newRating;
   }
 
   async getRecipeRating(recipeId: string): Promise<RecipeRating> {
