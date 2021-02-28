@@ -25,7 +25,10 @@ export class Recipe {
   photoUrl: string;
 
   @Prop()
-  ingredients: Array<string>;
+  ingredients: string[];
+
+  @Prop()
+  tags: string[];
 
   @Prop({ type: Object })
   rating: RecipeRating;

@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@api": ["./src/services/index.ts"]
+      "@api": ["./src/services/index.ts"],
+      "@shared/*": ["../shared/*"]
     }
   }
 }

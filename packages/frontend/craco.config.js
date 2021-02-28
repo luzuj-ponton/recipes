@@ -23,7 +23,7 @@ module.exports = {
         ({ constructor }) =>
           constructor && constructor.name === "ModuleScopePlugin"
       );
-    
+
       webpackConfig.resolve.plugins.splice(scopePluginIndex, 1);
       webpackConfig.module.rules.push({
         test: /\.tsx?$/,
