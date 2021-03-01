@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { RecipeRating } from '../../types/recipeRating.type';
 
 export type RecipeDocument = Recipe & Document;
 
@@ -24,7 +25,16 @@ export class Recipe {
   photoUrl: string;
 
   @Prop()
-  ingredients: Array<string>;
+  ingredients: string[];
+
+  @Prop()
+  tags: string[];
+
+  @Prop({ type: Object })
+  rating: RecipeRating;
+
+  @Prop({ type: Types.ObjectId, ref: 'User' })
+  creator: Types.ObjectId;
 }
 
 export const RecipeSchema = SchemaFactory.createForClass(Recipe);

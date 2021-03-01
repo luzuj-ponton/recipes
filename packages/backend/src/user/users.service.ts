@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,10 +10,16 @@ import { Model } from 'mongoose';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { CreateUserDto } from './dto/createUserDto';
 import { User, UserDocument } from './schema/user.schema';
+import { LoginUserDto } from './dto/loginUserDto';
+import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from 'src/auth/types/jwt-payload.interface';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    private jwtService: JwtService,
+  ) {}
   async register(createUserDto: CreateUserDto): Promise<void> {
     const { email, password } = createUserDto;
     const user = new this.userModel();
@@ -33,6 +40,39 @@ export class UsersService {
       } catch {
         throw new InternalServerErrorException();
       }
+    }
+  }
+
+  async login(loginUserDto: LoginUserDto): Promise<{ accessToken: string }> {
+    const email = await this.validateUserPassword(loginUserDto);
+
+    if (!email) {
+      throw new UnauthorizedException(Exceptions.InvalidCredentials);
+    }
+
+    const payload: JwtPayload = { email };
+    const accessToken = await this.jwtService.sign(payload);
+
+    return { accessToken };
+  }
+
+  async findById(id: string): Promise<User | null> {
+    return await this.userModel.findById(id);
+  }
+
+  private async validateUserPassword(
+    loginUserDto: LoginUserDto,
+  ): Promise<string | null> {
+    const { email, password } = loginUserDto;
+
+    const user = await this.userModel.findOne({
+      email: email,
+    });
+
+    if (user && (await user.validatePassword(password))) {
+      return user.email;
+    } else {
+      return null;
     }
   }
 

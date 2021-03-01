@@ -3,7 +3,8 @@
     "actions": {
       "sign-in": "Logowanie",
       "sign-up": "Rejestracja",
-      "subscribe": "Subskrybuj"
+      "subscribe": "Subskrybuj",
+      "logout": "Wyloguj"
     },
     "labels": {
       "home": "Strona główna",
@@ -24,8 +25,16 @@
       "be-the-first": "Dowiedz się jako pierwszy o najnowszych okazjach, otrzymuj nowe popularne przepisy i nie tylko!",
       "heading-title": "Wybieraj spośród tysiąca przepisów",
       "heading-text": "Odpowiednio zintegruj rozsądną technicznie wartość ze skalowalnymi pośrednikami informacyjnymi, negocjuj zrównoważone strategiczne obszary tematyczne",
-      "heading-signup": "Zarejestruj się już teraz"
-
+      "heading-signup": "Zarejestruj się już teraz",
+      "already-have-account": "Posiadasz już konto?",
+      "sign-up-box-text": "Jesteś już zarejestrowany? Zaloguj się i przygotuj swój pierwszy posiłek",
+      "welcome-back": "Witamy ponownie",
+      "create-account": "Stwórz konto",
+      "not-registered": "Nie jesteś zarejestrowany?",
+      "hello-there": "Cześć, Dołącz do nas",
+      "sign-in-box-text": "Podaj swój email i dołącz do społeczności kucharzy",
+      "log-in-account": "Zaloguj się do konta",
+      "password": "Hasło"
     }
   }
 }

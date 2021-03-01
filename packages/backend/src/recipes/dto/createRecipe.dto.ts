@@ -27,6 +27,13 @@ export class RecipeDto {
   @IsArray()
   ingredients: string[];
 
+  @IsNotEmpty()
+  @IsArray()
+  tags: string[];
+
   @IsArray()
   steps: Step[];
+
+  @IsString()
+  creator: string;
 }

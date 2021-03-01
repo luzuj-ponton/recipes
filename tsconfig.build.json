@@ -2,19 +2,18 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "sourceMap": true
-  },
-  "paths": {
-    "@recipes/*": ["./src/*", "./build/*"],
-    "@recipes/frontend/*": ["./src/*", "./build/*"],
-    "@recipes/backend/*": ["./src/*", "./build/*"],
-    "@recipes/shared/*": ["./src/*"],
-    "@recipes/common/*": ["./src/*"],
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@recipes/*": ["./src/*", "./build/*"]
+    },
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "build"
   ],
+  
   "include": [
     "packages",
     "./"
