@@ -3,8 +3,7 @@ import { Button } from "src/common/ui/Button.styled";
 import { IRecipe } from "@shared/src/types/recipe.type";
 import { FormArrayInput } from "../FormArrayInput/FormArrayInput";
 import { FormInput } from "../FormInput/FormInput";
-import { AddRecipeCard } from "./AddRecipeCard";
-import { PageHeader, StyledForm, Wrapper } from "./AddRecipeForm.styled";
+import { PageHeader, StyledForm } from "./AddRecipeForm.styled";
 import { AddStep } from "./AddStep";
 import { AddRecipeFormPagesWrapper } from "./AddRecipeFormPageWrapper";
 import { AddRecipeFormPage } from "./AddRecipeFormPage";
@@ -48,44 +47,41 @@ export const AddRecipeForm: React.FC = () => {
       <PageHeader>Add Recipe</PageHeader>
       <Formik initialValues={initialValues} onSubmit={handleAddRecipe}>
         {({ values, getFieldProps, getFieldMeta }: FormikProps<IRecipe>) => (
-          <Wrapper>
-            <StyledForm>
-              <AddRecipeFormPagesWrapper dataLength={4}>
-                {recipeFormData.map((page, index) => (
-                  <AddRecipeFormPage pageIndex={index}>
-                    {page.map(({ key, label }) => (
-                      <FormInput
-                        key={key}
-                        label={label}
-                        {...getFieldProps(key)}
-                        {...getFieldMeta(key)}
-                      />
-                    ))}
-                  </AddRecipeFormPage>
-                ))}
-                <AddRecipeFormPage pageIndex={2}>
-                  <FormArrayInput
-                    values={values["ingredients"]}
-                    label="Ingredients"
-                    id="ingredients"
-                  />
+          <StyledForm>
+            <AddRecipeFormPagesWrapper dataLength={4}>
+              {recipeFormData.map((page, index) => (
+                <AddRecipeFormPage pageIndex={index} key={index}>
+                  {page.map(({ key, label }) => (
+                    <FormInput
+                      key={key}
+                      label={label}
+                      {...getFieldProps(key)}
+                      {...getFieldMeta(key)}
+                    />
+                  ))}
                 </AddRecipeFormPage>
-                <AddRecipeFormPage pageIndex={3}>
-                  <AddStep values={values["steps"]} />
-                </AddRecipeFormPage>
-                <AddRecipeFormPage pageIndex={4}>
-                  <div>
-                    <PageHeader>Tags:</PageHeader>
-                    {tags ? <AddRecipeTags tags={tags} /> : null}
-                  </div>
-                  <Button variant="secondary" type="submit" width={200}>
-                    Add recipe
-                  </Button>
-                </AddRecipeFormPage>
-              </AddRecipeFormPagesWrapper>
-            </StyledForm>
-            <AddRecipeCard {...values} />
-          </Wrapper>
+              ))}
+              <AddRecipeFormPage pageIndex={2}>
+                <FormArrayInput
+                  values={values["ingredients"]}
+                  label="Ingredients"
+                  id="ingredients"
+                />
+              </AddRecipeFormPage>
+              <AddRecipeFormPage pageIndex={3}>
+                <AddStep values={values["steps"]} />
+              </AddRecipeFormPage>
+              <AddRecipeFormPage pageIndex={4}>
+                <div>
+                  <PageHeader>Tags:</PageHeader>
+                  {tags ? <AddRecipeTags tags={tags} /> : null}
+                </div>
+                <Button variant="secondary" type="submit" width={200}>
+                  Add recipe
+                </Button>
+              </AddRecipeFormPage>
+            </AddRecipeFormPagesWrapper>
+          </StyledForm>
         )}
       </Formik>
     </>
