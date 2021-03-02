@@ -3,23 +3,31 @@ import i18n from "../../i18n";
 
 export const footerItems: FooterInfo[] = [
   {
-    text1: i18n.t("common:labels.presentations"),
-    text2: i18n.t("common:labels.professionals"),
-    text3: i18n.t("common:labels.stores"),
+    columnItems: [
+      { text: i18n.t("common:labels.presentations") },
+      { text: i18n.t("common:labels.professionals") },
+      { text: i18n.t("common:labels.stores") },
+    ],
   },
   {
-    text1: i18n.t("common:labels.webinars"),
-    text2: i18n.t("common:labels.workshops"),
-    text3: i18n.t("common:labels.local-meetups"),
+    columnItems: [
+      { text: i18n.t("common:labels.webinars") },
+      { text: i18n.t("common:labels.workshops") },
+      { text: i18n.t("common:labels.local-meetups") },
+    ],
   },
   {
-    text1: i18n.t("common:labels.our-initiatives"),
-    text2: i18n.t("common:labels.giving-back"),
-    text3: i18n.t("common:labels.communities"),
+    columnItems: [
+      { text: i18n.t("common:labels.our-initiatives") },
+      { text: i18n.t("common:labels.giving-back") },
+      { text: i18n.t("common:labels.communities") },
+    ],
   },
   {
-    text1: i18n.t("common:labels.contact-form"),
-    text2: i18n.t("common:labels."),
-    text3: i18n.t("common:labels."),
+    columnItems: [
+      { text: i18n.t("common:labels.contact-form") },
+      { text: i18n.t("common:labels.work-with-us") },
+      { text: i18n.t("common:labels.visit-us") },
+    ],
   },
 ];
