@@ -1,5 +1,8 @@
+interface ColumnItem {
+  text: string;
+}
+
 export interface FooterInfo {
-  text1: string;
-  text2: string;
-  text3: string;
+  id: number;
+  columnItems: ColumnItem[];
 }
