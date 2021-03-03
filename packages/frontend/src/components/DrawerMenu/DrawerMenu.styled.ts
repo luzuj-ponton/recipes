@@ -6,6 +6,7 @@ import { Breakpoint } from "../../enums/breakpoint.enum";
 import { rgba } from "polished";
 import svg from "react-inlinesvg";
 import { RedirectButton } from "../../common/ui/Button.styled";
+import { zIndex } from "src/enums/zIndex.enum";
 
 export const LogoContainer = styled.div`
   display: flex;
@@ -32,7 +33,8 @@ export const NavStyled = styled.nav<NavStyledProps>`
   padding: 20px;
   background-color: ${Color.Black};
   position: fixed;
-  transform: ${({ isOpen }) => (isOpen ? "transform: translateX(0)" : "translateX(100%)")};
+  z-index: ${zIndex.DrawerMenu};
+  transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
   top: 0;
   right: 0;
   width: 100%;
@@ -57,36 +59,37 @@ export const NavItems = styled.ul`
   margin-bottom: 40px;
 `;
 
-export const RedirectButtonStyled = styled(RedirectButton)`
-  margin-bottom: 20px;
-  width: 220px;
-  align-self: center;
-  @media ${Breakpoint.Tablet} {
-    width: 100%;
-  }
-`;
-
 export const SocialsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
-  margin-top: 40px;
   align-self: center;
 `;
 
-export const SocialIcon = styled(svg)`
+export const StyledLink = styled.a`
+  display: block;
+  cursor: pointer;
+  margin: 0 3px;
+`;
+
+export const Icon = styled(svg)`
   width: 20px;
   height: 20px;
   fill: ${rgba(`${Color.White}`, 0.4)};
   transition: 0.2s;
-  cursor: pointer;
   :hover {
     fill: ${Color.White};
     transform: scale(1.1);
   }
 `;
-
-export const StyledLink = styled.a`
-  display: block;
+export const StyledRedirectButton = styled(RedirectButton)`
+  margin-bottom: 20px;
+  width: 220px;
+  align-self: center;
+  :last-of-type {
+    margin-bottom: 40px;
+  }
+  @media ${Breakpoint.Tablet} {
+    width: 100%;
+  }
 `;

@@ -16,9 +16,6 @@ button {
     border: none;
 }
 
-body {
-    height:150vh;
-}
 
 `;
 

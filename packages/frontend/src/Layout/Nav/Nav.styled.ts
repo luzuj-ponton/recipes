@@ -4,16 +4,22 @@ import { HamburgerInnerProps, RedirectButtonStyledProps } from "./Nav.types";
 import svg from "react-inlinesvg";
 import { Breakpoint } from "../../enums/breakpoint.enum";
 import { RedirectButton } from "../../common/ui/Button.styled";
+import { zIndex } from "src/enums/zIndex.enum";
 
 export const Wrapper = styled.div`
   display: flex;
+  background-color: ${Color.White};
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: ${zIndex.DesktopMenu};
 `;
 
 export const Hamburger = styled.div`
   height: 20px;
   width: 20px;
   position: fixed;
-  top: 46px;
+  top: 38px;
   left: 16px;
   cursor: pointer;
   margin-right: 10px;
@@ -91,8 +97,8 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px 0;
   padding-left: 16px;
+  margin: 30px 0 20px 0;
 
   @media ${Breakpoint.Desktop} {
     padding-left: 0;

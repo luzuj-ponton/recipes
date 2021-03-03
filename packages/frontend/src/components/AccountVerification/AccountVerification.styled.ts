@@ -6,11 +6,20 @@ import { Form } from "formik";
 import { FontWeight } from "src/enums/fontweight.enum";
 import { FlexContainer } from "../Containers/Containers.styles";
 import { Breakpoint } from "src/enums/breakpoint.enum";
+import { GridWidth } from "src/enums/gridWidth.enum";
 
 export const PageWrapper = styled(FlexContainer)`
   height: 100vh;
-`;
+  margin: 0 auto;
+  padding: 0 40px;
 
+  @media ${Breakpoint.Desktop} {
+    max-width: ${GridWidth.Desktop};
+  }
+`;
+export const IconsWrapper = styled(FlexContainer)`
+  margin-top: 20px;
+`;
 export const StyledForm = styled(Form)`
   width: 90%;
   height: 100%;
@@ -72,6 +81,7 @@ export const Text = styled.p`
 `;
 
 export const StyledLink = styled(Link)`
+  margin-left: 3px;
   color: ${Color.Red};
   font-weight: ${FontWeight.Bold};
 `;

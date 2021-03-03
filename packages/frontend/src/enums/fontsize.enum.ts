@@ -1,5 +1,6 @@
 export enum FontSize {
   SmallS = "12px",
+  SmallM = "14px",
   Small = "16px",
   MediumS = "20px",
   Medium = "22px",
