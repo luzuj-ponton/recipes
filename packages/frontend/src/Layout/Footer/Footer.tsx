@@ -24,10 +24,10 @@ export const Footer: React.FC = () => (
     </SocialsWrapper>
     <FooterItemsWrapper>
       {footerItems.map((footerItem) => (
-        <FooterItem key={footerItem.text1}>
-          <Text>{footerItem.text1}</Text>
-          <Text>{footerItem.text2}</Text>
-          <Text>{footerItem.text3}</Text>
+        <FooterItem key={footerItem.id}>
+          {footerItem.columnItems.map((columnItem) => (
+            <Text key={columnItem.text}>{columnItem.text}</Text>
+          ))}
         </FooterItem>
       ))}
     </FooterItemsWrapper>

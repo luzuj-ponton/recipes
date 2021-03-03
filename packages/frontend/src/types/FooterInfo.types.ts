@@ -3,5 +3,6 @@ interface ColumnItem {
 }
 
 export interface FooterInfo {
+  id: number;
   columnItems: ColumnItem[];
 }
