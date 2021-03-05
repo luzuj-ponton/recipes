@@ -77,7 +77,7 @@ export class RecipesService {
     const query: FilterQuery<RecipeDocument> = {};
 
     if (fields && text) {
-      query[fields] = { $regex: String(text), $options: 'i' };
+      query[fields] = { $regex: text, $options: 'i' };
     }
 
     if (tagsArr) {
