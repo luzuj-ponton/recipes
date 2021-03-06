@@ -1,11 +1,15 @@
 import React from "react";
-import { AddRecipeTagsProps } from "./AddRecipeForm.types";
+import { useQuery } from "react-query";
+import { QueryKeys } from "src/enums/queryKeys.enum";
+import { getAllTags } from "src/services/recipesService";
 import { Label, Input, TagGroupWrapper, TagWrapper, Wrapper } from "./AddRecipeTags.styled";
 
-export const AddRecipeTags: React.FC<AddRecipeTagsProps> = ({ tags: { innerTags } }) => {
+export const AddRecipeTags: React.FC = () => {
+  const { data } = useQuery(QueryKeys.Tags, getAllTags);
+  const tags = data?.data?.[0].innerTags;
   return (
     <Wrapper>
-      {innerTags.map(({ title: tagGroupTitle, tags: tagsGroup }) => (
+      {tags?.map(({ title: tagGroupTitle, tags: tagsGroup }) => (
         <div key={tagGroupTitle}>
           <p>{tagGroupTitle}:</p>
           <TagGroupWrapper>

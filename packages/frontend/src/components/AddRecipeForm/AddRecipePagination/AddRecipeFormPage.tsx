@@ -1,32 +1,34 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Button } from "src/common/ui/Button.styled";
-import { Page, ButtonsWrapper } from "./AddRecipeForm.styled";
-import { AddRecipeFormPageProps } from "./AddRecipeForm.types";
-import { PagesContext } from "./AddRecipeFormPageWrapper";
+import { ButtonsWrapper, Page, ContentWrapper } from "./AddRecipeFormPage.styled";
+import { AddRecipeFormPageProps } from "./AddRecipeFormPagination.types";
+import { PagesContext } from "./AddRecipePagination";
 
 export const AddRecipeFormPage: React.FC<AddRecipeFormPageProps> = ({ children, pageIndex }) => {
   const { activePage, previousPage, nextPage, dataLength } = useContext(PagesContext);
+  const previousButtonDisabled = pageIndex === 0;
+  const nextButtonDisabled = dataLength === activePage;
   return (
     <Page active={activePage === pageIndex}>
-      {children}
+      <ContentWrapper>{children}</ContentWrapper>
       <ButtonsWrapper>
         <Button
           variant="secondary"
           type="button"
-          width={200}
+          width={100}
           onClick={previousPage}
-          disabled={pageIndex === 0}
+          disabled={previousButtonDisabled}
         >
-          Previous
+          &larr;
         </Button>
         <Button
           variant="secondary"
           type="button"
-          width={200}
+          width={100}
           onClick={nextPage}
-          disabled={dataLength === activePage}
+          disabled={nextButtonDisabled}
         >
-          Next
+          &rarr;
         </Button>
       </ButtonsWrapper>
     </Page>

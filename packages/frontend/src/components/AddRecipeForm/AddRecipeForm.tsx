@@ -3,15 +3,14 @@ import { Button } from "src/common/ui/Button.styled";
 import { IRecipe } from "@shared/src/types/recipe.type";
 import { FormArrayInput } from "../FormArrayInput/FormArrayInput";
 import { FormInput } from "../FormInput/FormInput";
-import { PageHeader, StyledForm } from "./AddRecipeForm.styled";
-import { AddStep } from "./AddStep";
-import { AddRecipeFormPagesWrapper } from "./AddRecipeFormPageWrapper";
-import { AddRecipeFormPage } from "./AddRecipeFormPage";
-import { useQuery } from "react-query";
-import { getAllTags } from "src/services/recipesService";
-import { QueryKeys } from "src/enums/queryKeys.enum";
+import { PageHeader, StyledForm, TagsWrapper } from "./AddRecipeForm.styled";
+import { AddStep } from "./AddStep/AddStep";
+import { AddRecipePagination } from "./AddRecipePagination/AddRecipePagination";
+import { AddRecipeFormPage } from "./AddRecipePagination/AddRecipeFormPage";
 import React from "react";
-import { AddRecipeTags } from "./AddRecipeTags";
+import { AddRecipeTags } from "./AddRecipeTags/AddRecipeTags";
+import { useMutation } from "react-query";
+import { addRecipe } from "src/services/recipesService";
 
 const recipeFormData = [
   [
@@ -39,16 +38,15 @@ const initialValues: IRecipe = {
 };
 
 export const AddRecipeForm: React.FC = () => {
-  const handleAddRecipe = (values: IRecipe) => console.log(values);
-  const { data } = useQuery(QueryKeys.Tags, getAllTags);
-  const tags = data?.data[0];
+  const mutation = useMutation(addRecipe);
+  const handleAddRecipe = (values: IRecipe) => mutation.mutate(values);
   return (
     <>
       <PageHeader>Add Recipe</PageHeader>
       <Formik initialValues={initialValues} onSubmit={handleAddRecipe}>
         {({ values, getFieldProps, getFieldMeta }: FormikProps<IRecipe>) => (
           <StyledForm>
-            <AddRecipeFormPagesWrapper dataLength={4}>
+            <AddRecipePagination dataLength={4}>
               {recipeFormData.map((page, index) => (
                 <AddRecipeFormPage pageIndex={index} key={index}>
                   {page.map(({ key, label }) => (
@@ -69,18 +67,18 @@ export const AddRecipeForm: React.FC = () => {
                 />
               </AddRecipeFormPage>
               <AddRecipeFormPage pageIndex={3}>
-                <AddStep values={values["steps"]} />
+                <AddStep />
               </AddRecipeFormPage>
               <AddRecipeFormPage pageIndex={4}>
-                <div>
+                <TagsWrapper>
                   <PageHeader>Tags:</PageHeader>
-                  {tags ? <AddRecipeTags tags={tags} /> : null}
-                </div>
+                  <AddRecipeTags />
+                </TagsWrapper>
                 <Button variant="secondary" type="submit" width={200}>
                   Add recipe
                 </Button>
               </AddRecipeFormPage>
-            </AddRecipeFormPagesWrapper>
+            </AddRecipePagination>
           </StyledForm>
         )}
       </Formik>

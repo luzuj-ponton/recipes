@@ -1,17 +1,18 @@
-import { Step } from "@shared/src/types/recipe.type";
-import { FieldArray, FieldArrayRenderProps } from "formik";
+import { IRecipe, Step } from "@shared/src/types/recipe.type";
+import { FieldArray, FieldArrayRenderProps, useFormikContext } from "formik";
 import React from "react";
 import { Button } from "src/common/ui/Button.styled";
-import { Label, LabelWrapper, InputGroupWrapper } from "../FormArrayInput/FormArrayInput.styled";
+import { Label, LabelWrapper, InputGroupWrapper } from "../../FormArrayInput/FormArrayInput.styled";
 import { InputsWrapper, Input, InputWrapper, StepTitle } from "./AddStep.styled";
-import { AddStepProps } from "./AddStep.type";
 
 const defaultStep: Step = {
   title: "",
   description: "",
 };
 
-export const AddStep: React.FC<AddStepProps> = ({ values }) => {
+export const AddStep: React.FC = () => {
+  const formik = useFormikContext();
+  const { steps } = formik.values as IRecipe;
   return (
     <FieldArray name="steps">
       {({ remove, insert }: FieldArrayRenderProps) => (
@@ -21,12 +22,12 @@ export const AddStep: React.FC<AddStepProps> = ({ values }) => {
             <Button
               variant="secondary"
               type="button"
-              onClick={() => insert(values.length, defaultStep)}
+              onClick={() => insert(steps.length, defaultStep)}
             >
               Add
             </Button>
           </LabelWrapper>
-          {values.map((item, index) => (
+          {steps.map((item, index) => (
             <InputsWrapper key={`$steps.${index}`}>
               <StepTitle>Step. {index + 1}</StepTitle>
               <Input

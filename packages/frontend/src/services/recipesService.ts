@@ -8,3 +8,6 @@ export const getAllRecipes = (): Promise<AxiosResponse<IRecipe>> =>
 
 export const getAllTags = (): Promise<AxiosResponse<IInnerTags[]>> =>
   apiService.get(ApiEndpoints.Tags);
+
+export const addRecipe = (recipe: IRecipe): Promise<AxiosResponse<any>> =>
+  apiService.post(ApiEndpoints.Recipes, recipe);

@@ -6,7 +6,7 @@ import { Breakpoint } from "src/enums/breakpoint.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 
 export const Wrapper = styled(FlexContainer)`
-  margin: 5px 15px 15px;
+  margin: 5px 0px 15px;
   width: 90%;
 `;
 
