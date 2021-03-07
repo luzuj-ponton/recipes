@@ -1,11 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { Recipe, RecipeDocument } from './schema/recipe.shema';
 import { RecipeDto } from './dto/createRecipe.dto';
 import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
+import { GetAllRecipesResponse } from '../types/getAllRecipesResponse.type';
 
 @Injectable()
 export class RecipesService {
@@ -71,20 +72,30 @@ export class RecipesService {
     limit,
     fields,
     text,
-  }: GetAllQueryOptions): Promise<Recipe[]> {
-    if (fields) {
-      return await this.recipeModel
-        .find({ [fields]: { $regex: String(text), $options: 'i' } })
-        .skip(Number(offset))
-        .limit(Number(limit))
-        .exec();
-    } else {
-      return await this.recipeModel
-        .find()
-        .skip(Number(offset))
-        .limit(Number(limit))
-        .exec();
+    tagsArr,
+  }: GetAllQueryOptions): Promise<GetAllRecipesResponse> {
+    const query: FilterQuery<RecipeDocument> = {};
+
+    if (fields && text) {
+      query[fields] = { $regex: text, $options: 'i' };
     }
+
+    if (tagsArr) {
+      query.tags = { $all: tagsArr };
+    }
+
+    const results: number = await this.recipeModel.find(query).countDocuments();
+
+    const currentRecipes: Recipe[] = await this.recipeModel
+      .find(query)
+      .skip(Number(offset))
+      .limit(Number(limit))
+      .exec();
+
+    return {
+      recipes: currentRecipes,
+      resultsQuantity: results,
+    };
   }
 
   async getUserRecipes(user: User): Promise<Recipe[]> {

@@ -3,4 +3,5 @@ export interface GetAllQueryOptions {
   limit?: number;
   fields?: string;
   text?: string;
+  tagsArr?: string[];
 }
