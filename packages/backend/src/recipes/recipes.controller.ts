@@ -18,6 +18,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from '../decorators/auth-user.decorator';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
+import { GetAllRecipesResponse } from 'src/types/getAllRecipesResponse.type';
 
 @Controller('recipes')
 export class RecipesController {
@@ -30,7 +31,9 @@ export class RecipesController {
   }
 
   @Get()
-  async getAll(@Query() queries: GetAllQueryOptions): Promise<Recipe[]> {
+  async getAll(
+    @Query() queries: GetAllQueryOptions,
+  ): Promise<GetAllRecipesResponse> {
     return await this.recipesService.getAll(queries);
   }
 
