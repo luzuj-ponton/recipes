@@ -14,7 +14,7 @@ export const AddRecipeTags: React.FC = () => {
           <p>{tagGroupTitle}:</p>
           <TagGroupWrapper>
             {tagsGroup.map(({ title }) => (
-              <TagWrapper>
+              <TagWrapper key={title}>
                 <Input type="checkbox" name="tags" value={title} id={title} />
                 <Label htmlFor={title} key={title}>
                   {title}

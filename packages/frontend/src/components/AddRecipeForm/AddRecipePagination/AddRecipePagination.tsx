@@ -4,21 +4,21 @@ import { IPagesContext, AddRecipeFormPagesWrapperProps } from "./AddRecipeFormPa
 export const PagesContext = React.createContext({} as IPagesContext);
 
 export const AddRecipePagination: React.FC<AddRecipeFormPagesWrapperProps> = ({
-  dataLength,
+  numberOfPages,
   children,
 }) => {
   const [activePage, setActivePage] = React.useState(0);
 
   const nextPage = React.useCallback(() => {
-    if (dataLength > activePage) setActivePage((prev) => prev + 1);
-  }, [activePage, dataLength]);
+    if (numberOfPages > activePage) setActivePage((prev) => prev + 1);
+  }, [activePage, numberOfPages]);
   const previousPage = React.useCallback(() => {
     if (activePage > 0) setActivePage((prev) => prev - 1);
   }, [activePage]);
 
   const value = React.useMemo(() => {
-    return { activePage, previousPage, nextPage, dataLength };
-  }, [activePage, dataLength, nextPage, previousPage]);
+    return { activePage, previousPage, nextPage, numberOfPages };
+  }, [activePage, numberOfPages, nextPage, previousPage]);
 
   return <PagesContext.Provider value={value}>{children}</PagesContext.Provider>;
 };

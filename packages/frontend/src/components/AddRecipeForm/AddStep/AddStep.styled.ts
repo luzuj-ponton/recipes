@@ -8,11 +8,8 @@ export const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: left;
-  min-width: 100%;
+  width: 100%;
   margin: 10px 0;
-  @media ${Breakpoint.Desktop} {
-    min-width: 100%;
-  }
 `;
 
 export const InputWrapper = styled.div`

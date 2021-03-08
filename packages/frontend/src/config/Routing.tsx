@@ -7,12 +7,13 @@ import { Register } from "src/Views/auth/Register";
 
 import { Routes } from "../enums/routes.enum";
 import { Layout } from "../Layout/Layout";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const Routing: React.FC = () => {
   return (
     <Layout>
       <Switch>
-        <Route path={Routes.AddRecipe} component={AddRecipe} />
+        <ProtectedRoute path={Routes.AddRecipe} component={AddRecipe} />
         <Route path={Routes.EditRecipe} />
         <Route path={Routes.Recipe} />
         <Route path={Routes.Login} component={Login} />

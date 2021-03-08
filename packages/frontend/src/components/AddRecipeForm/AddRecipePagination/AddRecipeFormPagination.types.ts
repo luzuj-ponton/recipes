@@ -1,12 +1,18 @@
 export interface AddRecipeFormPagesWrapperProps {
-  dataLength: number;
+  numberOfPages: number;
 }
+
 export interface IPagesContext {
   activePage: number;
-  dataLength: number;
+  numberOfPages: number;
   previousPage: () => void;
   nextPage: () => void;
 }
+
 export interface AddRecipeFormPageProps {
   pageIndex: number;
+}
+
+export interface PageProps {
+  active: boolean;
 }

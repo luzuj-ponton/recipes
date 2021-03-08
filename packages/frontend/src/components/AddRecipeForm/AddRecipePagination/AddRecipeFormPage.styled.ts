@@ -1,8 +1,9 @@
 import { Breakpoint } from "src/enums/breakpoint.enum";
 import styled from "styled-components";
+import { PageProps } from "./AddRecipeFormPagination.types";
 
-export const Page = styled.div<{ active: boolean }>`
-  width: 120%;
+export const Page = styled.div<PageProps>`
+  width: 110%;
   height: 400px;
   display: ${({ active }) => (active ? "flex" : "none")};
   flex-direction: column;
@@ -13,7 +14,6 @@ export const Page = styled.div<{ active: boolean }>`
 `;
 
 export const ContentWrapper = styled.div`
-  width: 100%;
   height: 450px;
   overflow-y: overlay;
   display: flex;
@@ -27,6 +27,5 @@ export const ContentWrapper = styled.div`
 export const ButtonsWrapper = styled.div`
   margin-top: 15px;
   display: flex;
-  width: 100%;
   justify-content: space-between;
 `;

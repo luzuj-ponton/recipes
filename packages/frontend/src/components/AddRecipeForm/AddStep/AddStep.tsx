@@ -11,8 +11,9 @@ const defaultStep: Step = {
 };
 
 export const AddStep: React.FC = () => {
-  const formik = useFormikContext();
-  const { steps } = formik.values as IRecipe;
+  const {
+    values: { steps },
+  } = useFormikContext<IRecipe>();
   return (
     <FieldArray name="steps">
       {({ remove, insert }: FieldArrayRenderProps) => (
@@ -28,7 +29,7 @@ export const AddStep: React.FC = () => {
             </Button>
           </LabelWrapper>
           {steps.map((item, index) => (
-            <InputsWrapper key={`$steps.${index}`}>
+            <InputsWrapper key={`$steps.${item.title}`}>
               <StepTitle>Step. {index + 1}</StepTitle>
               <Input
                 name={`steps.${index}.title`}

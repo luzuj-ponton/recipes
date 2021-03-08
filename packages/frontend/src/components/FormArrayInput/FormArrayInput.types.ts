@@ -1,5 +1,5 @@
-export interface FormArrayInputProps<Value> {
+export interface FormArrayInputProps {
   label: string;
-  values: Value[];
+  values: string[];
   id: string;
 }

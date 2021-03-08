@@ -46,7 +46,7 @@ export const AddRecipeForm: React.FC = () => {
       <Formik initialValues={initialValues} onSubmit={handleAddRecipe}>
         {({ values, getFieldProps, getFieldMeta }: FormikProps<IRecipe>) => (
           <StyledForm>
-            <AddRecipePagination dataLength={4}>
+            <AddRecipePagination numberOfPages={4}>
               {recipeFormData.map((page, index) => (
                 <AddRecipeFormPage pageIndex={index} key={index}>
                   {page.map(({ key, label }) => (

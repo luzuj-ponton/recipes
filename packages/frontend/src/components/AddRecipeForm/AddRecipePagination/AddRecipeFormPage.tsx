@@ -5,9 +5,9 @@ import { AddRecipeFormPageProps } from "./AddRecipeFormPagination.types";
 import { PagesContext } from "./AddRecipePagination";
 
 export const AddRecipeFormPage: React.FC<AddRecipeFormPageProps> = ({ children, pageIndex }) => {
-  const { activePage, previousPage, nextPage, dataLength } = useContext(PagesContext);
+  const { activePage, previousPage, nextPage, numberOfPages } = useContext(PagesContext);
   const previousButtonDisabled = pageIndex === 0;
-  const nextButtonDisabled = dataLength === activePage;
+  const nextButtonDisabled = numberOfPages === activePage;
   return (
     <Page active={activePage === pageIndex}>
       <ContentWrapper>{children}</ContentWrapper>
