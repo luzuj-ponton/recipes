@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin: 20px 0;
+  margin: 20px 0 30px 0;
   :before {
     content: "";
     display: block;
@@ -30,6 +30,7 @@ export const Wrapper = styled.div`
   }
   @media ${Breakpoint.Desktop} {
     padding: 70px;
+    margin-bottom: 60px;
   }
 `;
 

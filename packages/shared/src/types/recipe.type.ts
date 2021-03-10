@@ -7,4 +7,14 @@ export interface IRecipe {
   prepTimeMin: number;
   servings: number;
   photoUrl: string;
+  rating: {
+    rating: number;
+    total: number;
+  };
+  tags: string[];
+}
+
+export interface RecipesResponse {
+  recipes: IRecipe[];
+  resultsQuantity: number;
 }

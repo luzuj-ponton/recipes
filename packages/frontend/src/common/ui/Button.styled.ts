@@ -38,9 +38,9 @@ const ButtonStyles = {
   `,
   tertiary: css`
     font-size: ${FontSize.Medium};
-    color: ${Color.Grey};
+    color: ${Color.White};
     :hover {
-      color: ${Color.White};
+      color: ${Color.Red};
     }
   `,
   quaternary: css`
