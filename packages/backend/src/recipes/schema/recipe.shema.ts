@@ -30,6 +30,9 @@ export class Recipe {
   @Prop()
   tags: string[];
 
+  @Prop()
+  createdAt: number;
+
   @Prop({ type: Object })
   rating: RecipeRating;
 

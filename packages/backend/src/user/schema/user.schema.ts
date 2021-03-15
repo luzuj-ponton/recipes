@@ -14,6 +14,9 @@ export class User extends Document {
   password: string;
 
   @Prop()
+  userName: string;
+
+  @Prop()
   salt: string;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Recipe' }] })

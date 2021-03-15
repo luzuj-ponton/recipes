@@ -18,6 +18,7 @@ export class RecipesService {
     const createdRecipe = new this.recipeModel(createRecipeDto);
     user?.recipes.push(createdRecipe);
     user?.save();
+    createdRecipe.createdAt = new Date().getTime();
     return await createdRecipe.save();
   }
 
