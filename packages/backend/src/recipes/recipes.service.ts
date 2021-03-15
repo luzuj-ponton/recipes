@@ -7,6 +7,7 @@ import { Exceptions } from '../../../shared/src/enums/exceptions.enum';
 import { User } from '../user/schema/user.schema';
 import { GetAllQueryOptions } from './types/getAllQueryOptions.type';
 import { GetAllRecipesResponse } from '../types/getAllRecipesResponse.type';
+import { SortQuery } from './recipes.types';
 
 @Injectable()
 export class RecipesService {
@@ -74,21 +75,35 @@ export class RecipesService {
     fields,
     text,
     tagsArr,
+    sortBy,
+    sortType = -1,
   }: GetAllQueryOptions): Promise<GetAllRecipesResponse> {
-    const query: FilterQuery<RecipeDocument> = {};
+    const filterQuery: FilterQuery<RecipeDocument> = {};
+    const sortQuery: SortQuery = {};
 
     if (fields && text) {
-      query[fields] = { $regex: text, $options: 'i' };
+      filterQuery[fields] = { $regex: text, $options: 'i' };
     }
 
     if (tagsArr) {
-      query.tags = { $all: tagsArr };
+      filterQuery.tags = { $all: tagsArr };
     }
 
-    const results: number = await this.recipeModel.find(query).countDocuments();
+    if (!!sortBy) {
+      if (sortBy === 'date') {
+        sortQuery.createdAt = sortType;
+      } else {
+        sortQuery['rating.rating'] = sortType;
+      }
+    }
+
+    const results: number = await this.recipeModel
+      .find(filterQuery)
+      .countDocuments();
 
     const currentRecipes: Recipe[] = await this.recipeModel
-      .find(query)
+      .find(filterQuery)
+      .sort(sortQuery)
       .skip(Number(offset))
       .limit(Number(limit))
       .exec();
