@@ -14,7 +14,12 @@ export interface IRecipe {
   tags: string[];
 }
 
-export interface RecipesResponse {
-  recipes: IRecipe[];
-  resultsQuantity: number;
+export interface RecipeParameters {
+  offset?: number;
+  limit?: number;
+  fields?: string;
+  text?: string;
+  tagsArr?: string[];
+  sortBy?: string;
+  sortType?: number;
 }

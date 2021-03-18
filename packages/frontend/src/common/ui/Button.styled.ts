@@ -10,7 +10,6 @@ type ButtonVariants = "primary" | "secondary" | "tertiary" | "quaternary";
 interface StyledButtonProps {
   width?: number;
   variant: ButtonVariants;
-  $isActive?: boolean;
 }
 
 const ButtonStyles = {

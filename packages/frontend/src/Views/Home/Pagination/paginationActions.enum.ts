@@ -3,4 +3,6 @@ export enum PaginationActions {
   SetMaxPages = "setMaxPages",
   SetFilterText = "setFilterText",
   SetTagsArr = "setTagsArr",
+  SetSortBy = "setSortBy",
+  SetSortType = "setSortType",
 }

@@ -16,3 +16,13 @@ export const CardsGridWrapper = styled.div`
     margin-top: 0;
   }
 `;
+
+export const SearchAndSortWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media ${Breakpoint.Desktop} {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+`;

@@ -20,8 +20,20 @@ export interface SetTagsArrAction {
   payload: string[];
 }
 
+export interface SetSortByAction {
+  type: PaginationActions.SetSortBy;
+  payload: string;
+}
+
+export interface SetSortTypeAction {
+  type: PaginationActions.SetSortType;
+  payload: number;
+}
+
 export type PaginationAction =
   | SetPageAction
   | SetMaxPagesAction
   | SetFilterTextAction
-  | SetTagsArrAction;
+  | SetTagsArrAction
+  | SetSortByAction
+  | SetSortTypeAction;

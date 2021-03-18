@@ -3,12 +3,12 @@ import { Breakpoint } from "src/enums/breakpoint.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
 import svg from "react-inlinesvg";
-import { TagsWrapperTypes, TagTypes } from "./Accordion.types";
+import { TagsWrapperProps, TagProps } from "./Accordion.types";
 import { Color } from "src/enums/color.enum";
 
 export const Wrapper = styled.div`
   @media ${Breakpoint.Desktop} {
-    min-width: 250px;
+    min-width: 270px;
     margin-right: 30px;
   }
 `;
@@ -30,11 +30,12 @@ export const RecipeTypeWrapper = styled.div`
 
 export const RecipeType = styled.p`
   font-weight: ${FontWeight.Medium};
+  padding-left: 6px;
 `;
 
-export const Tag = styled.p<TagTypes>`
+export const Tag = styled.p<TagProps>`
   font-size: ${FontSize.SmallM};
-  padding: 8px 0 8px 12px;
+  padding: 8px 0 8px 18px;
   cursor: pointer;
   transition: 0.2s;
   color: ${({ isActive }) => (isActive ? Color.Red : Color.Black)};
@@ -43,11 +44,11 @@ export const Tag = styled.p<TagTypes>`
   }
 `;
 
-export const TagsWrapper = styled.div<TagsWrapperTypes>`
+export const TagsWrapper = styled.div<TagsWrapperProps>`
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   ${({ isOpen }) =>
     isOpen &&
@@ -59,6 +60,6 @@ export const TagsWrapper = styled.div<TagsWrapperTypes>`
 
 export const Icon = styled(svg)`
   fill: ${Color.Black};
-  height: 14px;
-  width: 14px;
+  height: 18px;
+  width: 18px;
 `;

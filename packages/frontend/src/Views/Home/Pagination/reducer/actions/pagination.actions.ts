@@ -5,6 +5,8 @@ import {
   SetFilterTextAction,
   SetMaxPagesAction,
   SetPageAction,
+  SetSortByAction,
+  SetSortTypeAction,
 } from "../types/paginationActions.types";
 
 export const setPage = (dispatch: Dispatch<SetPageAction>, page: number) => {
@@ -21,4 +23,11 @@ export const setFilterText = (dispatch: Dispatch<SetFilterTextAction>, filterTex
 
 export const setTagsArr = (dispatch: Dispatch<SetTagsArrAction>, tagsArr: string[]) => {
   dispatch({ type: PaginationActions.SetTagsArr, payload: tagsArr });
+};
+
+export const setSortBy = (dispatch: Dispatch<SetSortByAction>, sortBy: string) => {
+  dispatch({ type: PaginationActions.SetSortBy, payload: sortBy });
+};
+export const setSortType = (dispatch: Dispatch<SetSortTypeAction>, sortType: number) => {
+  dispatch({ type: PaginationActions.SetSortType, payload: sortType });
 };

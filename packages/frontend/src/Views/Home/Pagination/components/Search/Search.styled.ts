@@ -4,11 +4,13 @@ import svg from "react-inlinesvg";
 import { Color } from "src/enums/color.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 import { rgba } from "polished";
+import { Breakpoint } from "src/enums/breakpoint.enum";
 
 export const Wrapper = styled.form`
   position: relative;
   display: flex;
   align-items: center;
+  width: 65%;
 `;
 
 export const Icon = styled(svg)`
@@ -29,5 +31,8 @@ export const StyledInput = styled.input`
   width: 100%;
   ::placeholder {
     color: ${rgba(Color.Grey, 0.5)};
+  }
+  ${Breakpoint.Desktop} {
+    width: 70%;
   }
 `;

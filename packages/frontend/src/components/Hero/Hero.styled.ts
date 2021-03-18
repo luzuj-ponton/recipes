@@ -25,12 +25,13 @@ export const Wrapper = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${rgba(`${Color.Black}`, 0.3)};
+    background-color: ${rgba(`${Color.Black}`, 0.2)};
     border-radius: 20px;
   }
   @media ${Breakpoint.Desktop} {
-    padding: 70px;
+    padding: 90px 70px;
     margin-bottom: 60px;
+    background-position-y: top;
   }
 `;
 

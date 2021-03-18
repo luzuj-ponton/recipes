@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { zIndex } from "src/enums/zIndex.enum";
 import { Breakpoint } from "src/enums/breakpoint.enum";
 import { HeartIconTypes, ImageContainerTypes } from "./Card.types";
+import backupImage from "src/assets/images/backupImage.jpg";
 
 export const ImageContainer = styled.div<ImageContainerTypes>`
   position: relative;
@@ -17,9 +18,7 @@ export const ImageContainer = styled.div<ImageContainerTypes>`
   max-width: 100%;
   border-radius: 10px;
   background-image: ${({ bgImage }): string =>
-    bgImage
-      ? `url(${bgImage})`
-      : "url(http://i.wpimg.pl/1000x0/products.wpcdn.pl/photos/11124.jpg)"};
+    bgImage ? `url(${bgImage})` : `url(${backupImage})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -52,6 +51,7 @@ export const Wrapper = styled(Link)`
   :hover ${ImageContainer}:before {
     background-color: ${rgba(`${Color.Black}`, 0.2)};
   }
+  min-height: 205px;
 `;
 
 export const HeartIcon = styled(svg)<HeartIconTypes>`
@@ -79,7 +79,7 @@ export const HeartIcon = styled(svg)<HeartIconTypes>`
     `}
 `;
 
-export const RecipeName = styled.h2`
+export const RecipeName = styled.p`
   color: ${Color.Black};
   font-size: ${FontSize.SmallM};
   font-weight: ${FontWeight.Medium};
@@ -96,20 +96,3 @@ export const BottomPanel = styled.div`
     justify-content: space-between;
   }
 `;
-
-export const RatingWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 3px;
-`;
-
-export const StarIcon = styled(svg)`
-  fill: ${Color.Yellow};
-  height: 14px;
-  width: 14px;
-  margin-right: 10px;
-`;
-
-export const Rating = styled.span``;
-
-export const Author = styled.p``;

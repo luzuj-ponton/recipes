@@ -4,12 +4,12 @@ import { Color } from "src/enums/color.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
 import { PageNumberTypes } from "./PageSetter.types";
+import { Button } from "src/common/ui/Button.styled";
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
 `;
 
 export const ArrowIcon = styled(svg)`
@@ -26,12 +26,12 @@ export const ArrowIcon = styled(svg)`
   }
 `;
 
-export const PageNumber = styled.div<PageNumberTypes>`
+export const PageNumber = styled(Button)<PageNumberTypes>`
   font-size: ${FontSize.SmallM};
   font-weight: ${FontWeight.Medium};
-  margin: 0 10px;
+  padding: 6px 14px;
   color: ${({ activeColor }) => (activeColor ? `${activeColor}` : Color.Silver)};
-  transition: 0.2s;
+
   cursor: pointer;
   :first-of-type {
     margin-left: 20px;

@@ -1,26 +1,26 @@
 import React from "react";
 import { Hero } from "../../components/Hero/Hero";
-import { CardsGrid } from "../Home/CardsGrid/CardsGrid";
+import { CardsGrid } from "./Pagination/components/CardsGrid/CardsGrid";
 import { Pagination } from "./Pagination/Pagination";
-import { PageSetter } from "./PageSetter/PageSetter";
-import { Search } from "src/components/Search/Search";
-import { Accordion } from "src/components/Accordion/Accordion";
-import { CardsGridWrapper, Wrapper } from "./Home.styled";
+import { Search } from "src/Views/Home/Pagination/components/Search/Search";
+import { Accordion } from "src/Views/Home/Pagination/components/Accordion/Accordion";
+import { CardsGridWrapper, SearchAndSortWrapper, Wrapper } from "./Home.styled";
+import { Sort } from "src/Views/Home/Pagination/components/Sort/Sort";
 
-export const Home: React.FC = () => {
-  return (
-    <>
-      <Hero />
-      <Pagination>
-        <Wrapper>
-          <Accordion />
-          <CardsGridWrapper>
+export const Home: React.FC = () => (
+  <>
+    <Hero />
+    <Pagination>
+      <Wrapper>
+        <Accordion />
+        <CardsGridWrapper>
+          <SearchAndSortWrapper>
             <Search />
-            <CardsGrid />
-            <PageSetter />
-          </CardsGridWrapper>
-        </Wrapper>
-      </Pagination>
-    </>
-  );
-};
+            <Sort />
+          </SearchAndSortWrapper>
+          <CardsGrid />
+        </CardsGridWrapper>
+      </Wrapper>
+    </Pagination>
+  </>
+);
