@@ -3,7 +3,7 @@ import { useRecipes } from "src/services/hooks/useRecipes";
 import { Card } from "src/Views/Home/Pagination/components/Card/Card";
 import { LoadingSkeletonCard } from "src/Views/Home/Pagination/components/Card/LoadingSkeletonCard/LoadingSkeletonCard";
 import { usePaginationContext } from "../../hooks/usePaginationContext";
-import { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { setMaxPages } from "../../reducer/actions/pagination.actions";
 import { useEffectAfterMount } from "src/hooks/useEffectAfterMount";
 import { PageSetter } from "../../PageSetter/PageSetter";
@@ -15,7 +15,7 @@ export const CardsGrid: React.FC = () => {
     dispatch,
   ] = usePaginationContext();
 
-  const { isLoading, data, refetch } = useRecipes({
+  const { data, refetch, isFetching } = useRecipes({
     offset,
     limit,
     fields: field,
@@ -31,12 +31,21 @@ export const CardsGrid: React.FC = () => {
 
   const maxPages = recipesData ? recipesData?.resultsQuantity / limit : 0;
 
+  const cardsRef = useRef<HTMLDivElement>(null!); // jak daje null to wywala błąd, nie wiem jak to inaczej otypować albo co wpisać zamiast null!
+
+  //probably temporary solution
+  const executeScroll = () => {
+    const node = cardsRef.current;
+    window.scrollTo({ top: node.offsetTop - 230, behavior: "smooth" });
+  };
+
   useEffect(() => {
     setMaxPages(dispatch, Math.ceil(maxPages));
   }, [dispatch, maxPages]);
 
   useEffectAfterMount(() => {
     refetch();
+    executeScroll();
   }, [dispatch, refetch, offset, filterText, tagsArr, sortBy, sortType]);
 
   if (recipesData?.recipes.length === 0)
@@ -51,7 +60,7 @@ export const CardsGrid: React.FC = () => {
       </NoResults>
     );
 
-  if (isLoading) {
+  if (isFetching) {
     return (
       <CardsContainer>
         {skeletonData.map((index) => (
@@ -63,15 +72,15 @@ export const CardsGrid: React.FC = () => {
 
   return (
     <>
-      <CardsContainer>
-        {recipesData?.recipes.map((recipe) => (
+      <CardsContainer ref={cardsRef}>
+        {recipesData?.recipes.map(({ _id, photoUrl, title, rating }) => (
           <Card
-            key={recipe._id}
-            id={recipe._id}
-            photoUrl={recipe.photoUrl}
-            title={recipe.title}
-            rating={recipe.rating?.rating}
-            total={recipe.rating?.total}
+            key={_id}
+            id={_id}
+            photoUrl={photoUrl}
+            title={title}
+            rating={rating?.rating}
+            total={rating?.total}
           />
         ))}
       </CardsContainer>

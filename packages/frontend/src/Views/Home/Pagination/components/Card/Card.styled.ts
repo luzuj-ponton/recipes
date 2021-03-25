@@ -96,3 +96,12 @@ export const BottomPanel = styled.div`
     justify-content: space-between;
   }
 `;
+
+export const Author = styled.p`
+  width: 100%;
+  margin-top: 3px;
+  @media ${Breakpoint.MobileS} {
+    text-align: right;
+    margin-top: 0;
+  }
+`;

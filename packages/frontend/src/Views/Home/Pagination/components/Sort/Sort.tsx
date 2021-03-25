@@ -4,6 +4,7 @@ import {
   setSortBy,
   setSortType,
 } from "src/Views/Home/Pagination/reducer/actions/pagination.actions";
+import { options } from "./config";
 
 export const Sort: React.FC = () => {
   const [, dispatch] = usePaginationContext();
@@ -19,13 +20,12 @@ export const Sort: React.FC = () => {
   };
 
   return (
-    <>
-      <Select onChange={handleChange}>
-        <option value="date -1">Date: From newest</option>
-        <option value="date 1">Date: From oldest</option>
-        <option value="rating 1">Rating: From lowest</option>
-        <option value="rating -1">Rating: From highest</option>
-      </Select>
-    </>
+    <Select onChange={handleChange}>
+      {options.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.text}
+        </option>
+      ))}
+    </Select>
   );
 };

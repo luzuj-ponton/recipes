@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Wrapper, ImageContainer, RecipeName, BottomPanel, HeartIcon } from "./Card.styled";
+import { Wrapper, ImageContainer, RecipeName, BottomPanel, HeartIcon, Author } from "./Card.styled";
 import { Rating } from "../Rating/Rating";
 import { Routes } from "src/enums/routes.enum";
 import { CardProps } from "./Card.types";
@@ -23,8 +23,14 @@ export const Card: React.FC<CardProps> = ({ id, photoUrl, title, rating, total, 
       <HeartIcon src={heartIcon} $isFilled={isFilled} onClick={toggleFill} />
       <RecipeName>{title}</RecipeName>
       <BottomPanel>
-        {isRatingAndTotal ? <Rating rating={rating} total={total} /> : null}
-        <p>{author}</p>
+        {isRatingAndTotal ? (
+          <>
+            <Rating rating={rating} total={total} />
+            <Author>{author}</Author>
+          </>
+        ) : (
+          <Author>{author}</Author>
+        )}
       </BottomPanel>
     </Wrapper>
   );

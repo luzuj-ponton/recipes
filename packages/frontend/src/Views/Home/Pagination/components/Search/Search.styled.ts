@@ -10,7 +10,11 @@ export const Wrapper = styled.form`
   position: relative;
   display: flex;
   align-items: center;
-  width: 65%;
+  width: 100%;
+
+  @media ${Breakpoint.Desktop} {
+    flex-basis: 65%;
+  }
 `;
 
 export const Icon = styled(svg)`
@@ -29,10 +33,8 @@ export const StyledInput = styled.input`
   background-color: ${Color.MediumGrey};
   font-size: ${FontSize.SmallM};
   width: 100%;
+
   ::placeholder {
     color: ${rgba(Color.Grey, 0.5)};
-  }
-  ${Breakpoint.Desktop} {
-    width: 70%;
   }
 `;

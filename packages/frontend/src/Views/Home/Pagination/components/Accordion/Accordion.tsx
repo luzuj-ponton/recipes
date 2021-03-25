@@ -20,9 +20,9 @@ export const Accordion: React.FC = () => {
 
   const { data } = useTags();
 
-  const tagsArr = data?.data[0].innerTags;
+  const tagsArrData = data?.data[0].innerTags;
 
-  const toggleOpen = (e: React.MouseEvent<HTMLDivElement>) => {
+  const toggleOpenRecipeType = (e: React.MouseEvent<HTMLDivElement>) => {
     const tagType = e.currentTarget.innerText;
 
     if (activeGroups.includes(tagType)) {
@@ -32,7 +32,7 @@ export const Accordion: React.FC = () => {
     setActiveGroups((prevState) => [...prevState, tagType]);
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLParagraphElement>) => {
+  const handleClickTag = (e: React.MouseEvent<HTMLParagraphElement>) => {
     const name = e.currentTarget.innerText;
 
     if (state.tagsArr.includes(name)) {
@@ -48,16 +48,16 @@ export const Accordion: React.FC = () => {
   return (
     <Wrapper>
       <Title>Recipes</Title>
-      {tagsArr?.map((group) => (
+      {tagsArrData?.map((group) => (
         <Fragment key={group.title}>
-          <RecipeTypeWrapper onClick={toggleOpen}>
+          <RecipeTypeWrapper onClick={toggleOpenRecipeType}>
             <RecipeType>{group.title}</RecipeType>
             <Icon src={activeGroups.includes(group.title) ? minus : plus} />
           </RecipeTypeWrapper>
           <TagsWrapper isOpen={activeGroups.includes(group.title)}>
             {group.tags.map((tag) => (
               <Tag
-                onClick={handleClick}
+                onClick={handleClickTag}
                 isActive={state.tagsArr.includes(tag.title)}
                 key={tag.title}
               >
