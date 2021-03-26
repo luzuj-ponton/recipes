@@ -36,7 +36,7 @@ export const CardsGrid: React.FC = () => {
   //probably temporary solution
   const executeScroll = () => {
     const node = cardsRef.current;
-    window.scrollTo({ top: node.offsetTop - 230, behavior: "smooth" });
+    window.scrollTo({ top: node?.offsetTop - 230, behavior: "smooth" });
   };
 
   useEffect(() => {
