@@ -12,6 +12,8 @@ export interface IRecipe {
     total: number;
   };
   tags: string[];
+  creator: string;
+  comments: string[];
 }
 
 export interface RecipeParameters {
