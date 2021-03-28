@@ -22,12 +22,10 @@ export const Card: React.FC<CardProps> = ({ id, photoUrl, title, rating, total, 
       <ImageContainer bgImage={photoUrl}></ImageContainer>
       <HeartIcon src={heartIcon} $isFilled={isFilled} onClick={toggleFill} />
       <RecipeName>{title}</RecipeName>
-      {hasRatingAndTotal || author ? (
-        <BottomPanel>
-          {hasRatingAndTotal && <Rating rating={rating} total={total} />}
-          {author && <Author>{author}</Author>}
-        </BottomPanel>
-      ) : null}
+      <BottomPanel>
+        {hasRatingAndTotal && <Rating rating={rating} total={total} />}
+        <Author>{author}</Author>
+      </BottomPanel>
     </Wrapper>
   );
 };
