@@ -1,7 +1,7 @@
 import { CardsContainer, NoResults, Image, Message, Text } from "./CardsGrid.styled";
 import { useRecipes } from "src/services/hooks/useRecipes";
-import { Card } from "src/Views/Home/Pagination/components/Card/Card";
-import { LoadingSkeletonCard } from "src/Views/Home/Pagination/components/Card/LoadingSkeletonCard/LoadingSkeletonCard";
+import { Card } from "src/components/Pagination/components/Card/Card";
+import { LoadingSkeletonCard } from "src/components/Pagination/components/Card/LoadingSkeletonCard/LoadingSkeletonCard";
 import { usePaginationContext } from "../../hooks/usePaginationContext";
 import React, { useEffect, useRef } from "react";
 import { setMaxPages } from "../../reducer/actions/pagination.actions";

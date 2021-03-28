@@ -1,9 +1,9 @@
 import { Select } from "./Sort.styled";
-import { usePaginationContext } from "src/Views/Home/Pagination/hooks/usePaginationContext";
+import { usePaginationContext } from "src/components/Pagination/hooks/usePaginationContext";
 import {
   setSortBy,
   setSortType,
-} from "src/Views/Home/Pagination/reducer/actions/pagination.actions";
+} from "src/components/Pagination/reducer/actions/pagination.actions";
 import { options } from "./config";
 
 export const Sort: React.FC = () => {

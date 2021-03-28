@@ -30,7 +30,7 @@ export const PageNumber = styled(Button)<PageNumberTypes>`
   font-size: ${FontSize.SmallM};
   font-weight: ${FontWeight.Medium};
   padding: 6px 14px;
-  color: ${({ activeColor }) => (activeColor ? `${activeColor}` : Color.Silver)};
+  color: ${({ isActive }) => (isActive ? Color.Red : Color.Silver)};
 
   cursor: pointer;
   :first-of-type {

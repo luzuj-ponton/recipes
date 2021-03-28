@@ -1,7 +1,7 @@
 import { Wrapper, Icon, StyledInput } from "./Search.styled";
 import loupe from "src/assets/images/loupe.svg";
-import { setFilterText } from "src/Views/Home/Pagination/reducer/actions/pagination.actions";
-import { usePaginationContext } from "src/Views/Home/Pagination/hooks/usePaginationContext";
+import { setFilterText } from "src/components/Pagination/reducer/actions/pagination.actions";
+import { usePaginationContext } from "src/components/Pagination/hooks/usePaginationContext";
 import debounce from "lodash.debounce";
 import { useRef } from "react";
 

@@ -11,8 +11,8 @@ import {
 import { useTags } from "src/services/hooks/useTags";
 import plus from "src/assets/images/plus.svg";
 import minus from "src/assets/images/minus.svg";
-import { usePaginationContext } from "src/Views/Home/Pagination/hooks/usePaginationContext";
-import { setTagsArr } from "src/Views/Home/Pagination/reducer/actions/pagination.actions";
+import { usePaginationContext } from "src/components/Pagination/hooks/usePaginationContext";
+import { setTagsArr } from "src/components/Pagination/reducer/actions/pagination.actions";
 
 export const Accordion: React.FC = () => {
   const [activeGroups, setActiveGroups] = useState<string[]>([]);

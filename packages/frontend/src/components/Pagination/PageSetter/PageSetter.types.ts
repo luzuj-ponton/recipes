@@ -1,5 +1,5 @@
 export interface PageNumberTypes {
-  activeColor?: string;
+  isActive: boolean;
 }
 
 export interface GetVisisblePagesArrayParams {

@@ -2,7 +2,6 @@ import { Wrapper, ArrowIcon, PageNumber } from "./PageSetter.styled";
 import paginationarrow from "src/assets/images/paginationarrow.svg";
 import { setPage } from "../reducer/actions/pagination.actions";
 import { usePaginationContext } from "../hooks/usePaginationContext";
-import { Color } from "src/enums/color.enum";
 import { GetVisisblePagesArrayParams } from "./PageSetter.types";
 
 export const PageSetter: React.FC = () => {
@@ -50,11 +49,7 @@ export const PageSetter: React.FC = () => {
     <Wrapper>
       <ArrowIcon src={paginationarrow} onClick={handleDecrementPage} />
       {maxPages > 5 && (
-        <PageNumber
-          variant="primary"
-          activeColor={page === 1 ? `${Color.Red}` : undefined}
-          onClick={handleClick}
-        >
+        <PageNumber variant="primary" isActive={page === 1} onClick={handleClick}>
           1
         </PageNumber>
       )}
@@ -63,7 +58,7 @@ export const PageSetter: React.FC = () => {
         <PageNumber
           key={pageNumber}
           variant="primary"
-          activeColor={pageNumber === page ? `${Color.Red}` : undefined}
+          isActive={pageNumber === page}
           onClick={() => setPage(dispatch, pageNumber)}
         >
           {pageNumber}
@@ -71,11 +66,7 @@ export const PageSetter: React.FC = () => {
       ))}
       {pagesArr[2] < maxPages - 1 && maxPages > 5 && <div>...</div>}
       {maxPages > 5 && (
-        <PageNumber
-          variant="primary"
-          activeColor={maxPages === page ? `${Color.Red}` : undefined}
-          onClick={handleClick}
-        >
+        <PageNumber variant="primary" isActive={maxPages === page} onClick={handleClick}>
           {maxPages}
         </PageNumber>
       )}
