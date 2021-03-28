@@ -38,7 +38,7 @@ export const Tag = styled.p<TagProps>`
   padding: 8px 0 8px 18px;
   cursor: pointer;
   transition: 0.2s;
-  color: ${({ isActive }) => (isActive ? Color.Red : Color.Black)};
+  color: ${({ isActive }): Color => (isActive ? Color.Red : Color.Black)};
   :hover {
     color: ${Color.Red};
   }

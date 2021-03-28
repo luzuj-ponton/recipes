@@ -1,3 +1,4 @@
+import { Value } from "@components/Pagination/components/Sort/Sort.types";
 import { PaginationActions } from "../../paginationActions.enum";
 
 export interface SetPageAction {
@@ -20,14 +21,9 @@ export interface SetTagsArrAction {
   payload: string[];
 }
 
-export interface SetSortByAction {
-  type: PaginationActions.SetSortBy;
-  payload: string;
-}
-
-export interface SetSortTypeAction {
-  type: PaginationActions.SetSortType;
-  payload: number;
+export interface SetSortAction {
+  type: PaginationActions.SetSort;
+  payload: Value;
 }
 
 export type PaginationAction =
@@ -35,5 +31,4 @@ export type PaginationAction =
   | SetMaxPagesAction
   | SetFilterTextAction
   | SetTagsArrAction
-  | SetSortByAction
-  | SetSortTypeAction;
+  | SetSortAction;

@@ -7,10 +7,10 @@ export interface CardProps {
   id: string;
 }
 
-export interface HeartIconTypes {
+export interface HeartIconProps {
   $isFilled: boolean;
 }
 
-export interface ImageContainerTypes {
+export interface ImageContainerProps {
   bgImage: string;
 }

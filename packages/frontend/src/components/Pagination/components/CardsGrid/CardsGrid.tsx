@@ -1,5 +1,5 @@
 import { CardsContainer, NoResults, Image, Message, Text } from "./CardsGrid.styled";
-import { useRecipes } from "src/services/hooks/useRecipes";
+import { useRecipes } from "@services/hooks/useRecipes";
 import { Card } from "src/components/Pagination/components/Card/Card";
 import { LoadingSkeletonCard } from "src/components/Pagination/components/Card/LoadingSkeletonCard/LoadingSkeletonCard";
 import { usePaginationContext } from "../../hooks/usePaginationContext";
@@ -7,13 +7,15 @@ import React, { useEffect, useRef } from "react";
 import { setMaxPages } from "../../reducer/actions/pagination.actions";
 import { useEffectAfterMount } from "src/hooks/useEffectAfterMount";
 import { PageSetter } from "../../PageSetter/PageSetter";
-import noResultsImage from "src/assets/images/noResultsImage.jpg";
+import noResultsImage from "@assets/images/noResultsImage.jpg";
 
 export const CardsGrid: React.FC = () => {
   const [
-    { offset, limit, field, filterText, tagsArr, sortBy, sortType },
+    { limit, field, filterText, tagsArr, sortBy, sortType, page },
     dispatch,
   ] = usePaginationContext();
+
+  const offset = page === 1 ? 0 : (page - 1) * limit;
 
   const { data, refetch, isFetching } = useRecipes({
     offset,
@@ -31,12 +33,11 @@ export const CardsGrid: React.FC = () => {
 
   const maxPages = recipesData ? recipesData?.resultsQuantity / limit : 0;
 
-  const cardsRef = useRef<HTMLDivElement>(null!); // jak daje null to wywala błąd, nie wiem jak to inaczej otypować albo co wpisać zamiast null!
+  const cardsRef = useRef<HTMLDivElement | null>(null);
 
-  //probably temporary solution
   const executeScroll = () => {
     const node = cardsRef.current;
-    window.scrollTo({ top: node?.offsetTop - 230, behavior: "smooth" });
+    node && window.scrollTo({ top: node.offsetTop - 230, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export const CardsGrid: React.FC = () => {
   useEffectAfterMount(() => {
     refetch();
     executeScroll();
-  }, [dispatch, refetch, offset, filterText, tagsArr, sortBy, sortType]);
+  }, [dispatch, refetch, page, filterText, tagsArr, sortBy, sortType]);
 
   if (recipesData?.recipes.length === 0)
     return (
@@ -73,7 +74,7 @@ export const CardsGrid: React.FC = () => {
   return (
     <>
       <CardsContainer ref={cardsRef}>
-        {recipesData?.recipes.map(({ _id, photoUrl, title, rating }) => (
+        {recipesData?.recipes.map(({ _id, photoUrl, title, rating, creator }) => (
           <Card
             key={_id}
             id={_id}
@@ -81,6 +82,7 @@ export const CardsGrid: React.FC = () => {
             title={title}
             rating={rating?.rating}
             total={rating?.total}
+            author={creator}
           />
         ))}
       </CardsContainer>

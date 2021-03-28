@@ -3,7 +3,7 @@ import svg from "react-inlinesvg";
 import { Color } from "src/enums/color.enum";
 import { FontSize } from "src/enums/fontsize.enum";
 import { FontWeight } from "src/enums/fontweight.enum";
-import { PageNumberTypes } from "./PageSetter.types";
+import { PageNumberProps } from "./PageSetter.types";
 import { Button } from "src/common/ui/Button.styled";
 
 export const Wrapper = styled.div`
@@ -26,7 +26,7 @@ export const ArrowIcon = styled(svg)`
   }
 `;
 
-export const PageNumber = styled(Button)<PageNumberTypes>`
+export const PageNumber = styled(Button)<PageNumberProps>`
   font-size: ${FontSize.SmallM};
   font-weight: ${FontWeight.Medium};
   padding: 6px 14px;

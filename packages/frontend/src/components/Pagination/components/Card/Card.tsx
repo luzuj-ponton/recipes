@@ -15,23 +15,19 @@ export const Card: React.FC<CardProps> = ({ id, photoUrl, title, rating, total, 
     setIsFilled(!isFilled);
   };
 
-  const isRatingAndTotal = !!rating && !!total;
+  const hasRatingAndTotal = !!rating && !!total;
 
   return (
     <Wrapper to={`${Routes.Recipe}${id}`}>
       <ImageContainer bgImage={photoUrl}></ImageContainer>
       <HeartIcon src={heartIcon} $isFilled={isFilled} onClick={toggleFill} />
       <RecipeName>{title}</RecipeName>
-      <BottomPanel>
-        {isRatingAndTotal ? (
-          <>
-            <Rating rating={rating} total={total} />
-            <Author>{author}</Author>
-          </>
-        ) : (
-          <Author>{author}</Author>
-        )}
-      </BottomPanel>
+      {hasRatingAndTotal || author ? (
+        <BottomPanel>
+          {hasRatingAndTotal && <Rating rating={rating} total={total} />}
+          {author && <Author>{author}</Author>}
+        </BottomPanel>
+      ) : null}
     </Wrapper>
   );
 };

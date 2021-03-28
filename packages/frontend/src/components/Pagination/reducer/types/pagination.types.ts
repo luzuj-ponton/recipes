@@ -8,7 +8,6 @@ export type PaginationContextType = [
 export interface PaginationState {
   page: number;
   limit: number;
-  offset: number;
   maxPages: number;
   field: string;
   filterText: string;

@@ -8,11 +8,11 @@ import {
   Icon,
   TagsWrapper,
 } from "./Accordion.styled";
-import { useTags } from "src/services/hooks/useTags";
+import { useTags } from "@services/hooks/useTags";
 import plus from "src/assets/images/plus.svg";
 import minus from "src/assets/images/minus.svg";
 import { usePaginationContext } from "src/components/Pagination/hooks/usePaginationContext";
-import { setTagsArr } from "src/components/Pagination/reducer/actions/pagination.actions";
+import { setTagsArr } from "@components/Pagination/reducer/actions/pagination.actions";
 
 export const Accordion: React.FC = () => {
   const [activeGroups, setActiveGroups] = useState<string[]>([]);
@@ -23,26 +23,26 @@ export const Accordion: React.FC = () => {
   const tagsArrData = data?.data[0].innerTags;
 
   const toggleOpenRecipeType = (e: React.MouseEvent<HTMLDivElement>) => {
-    const tagType = e.currentTarget.innerText;
+    const tagTypeId = e.currentTarget.id;
 
-    if (activeGroups.includes(tagType)) {
-      return setActiveGroups((prevState) => prevState.filter((item) => item !== tagType));
+    if (activeGroups.includes(tagTypeId)) {
+      return setActiveGroups((prevState) => prevState.filter((item) => item !== tagTypeId));
     }
 
-    setActiveGroups((prevState) => [...prevState, tagType]);
+    setActiveGroups((prevState) => [...prevState, tagTypeId]);
   };
 
   const handleClickTag = (e: React.MouseEvent<HTMLParagraphElement>) => {
-    const name = e.currentTarget.innerText;
+    const tagId = e.currentTarget.id;
 
-    if (state.tagsArr.includes(name)) {
+    if (state.tagsArr.includes(tagId)) {
       return setTagsArr(
         dispatch,
-        state.tagsArr.filter((item) => item !== name),
+        state.tagsArr.filter((item) => item !== tagId),
       );
     }
 
-    setTagsArr(dispatch, [...state.tagsArr, name]);
+    setTagsArr(dispatch, [...state.tagsArr, tagId]);
   };
 
   return (
@@ -50,13 +50,14 @@ export const Accordion: React.FC = () => {
       <Title>Recipes</Title>
       {tagsArrData?.map((group) => (
         <Fragment key={group.title}>
-          <RecipeTypeWrapper onClick={toggleOpenRecipeType}>
+          <RecipeTypeWrapper id={group.title} onClick={toggleOpenRecipeType}>
             <RecipeType>{group.title}</RecipeType>
             <Icon src={activeGroups.includes(group.title) ? minus : plus} />
           </RecipeTypeWrapper>
           <TagsWrapper isOpen={activeGroups.includes(group.title)}>
             {group.tags.map((tag) => (
               <Tag
+                id={tag.title}
                 onClick={handleClickTag}
                 isActive={state.tagsArr.includes(tag.title)}
                 key={tag.title}

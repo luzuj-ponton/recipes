@@ -2,23 +2,11 @@ import { Wrapper, ArrowIcon, PageNumber } from "./PageSetter.styled";
 import paginationarrow from "src/assets/images/paginationarrow.svg";
 import { setPage } from "../reducer/actions/pagination.actions";
 import { usePaginationContext } from "../hooks/usePaginationContext";
-import { GetVisisblePagesArrayParams } from "./PageSetter.types";
+import { getVisiblePagesArray } from "./PageSetter.utils";
+import { SyntheticEvent } from "react";
 
 export const PageSetter: React.FC = () => {
   const [{ maxPages, page }, dispatch] = usePaginationContext();
-
-  const getVisiblePagesArray = ({ activePage, totalPages }: GetVisisblePagesArrayParams) => {
-    if (totalPages <= 5) {
-      return Array.from({ length: totalPages }, (_: null, i: number) => i + 1);
-    }
-    if (activePage < 4) {
-      return Array.from({ length: 3 }, (_, i) => i + 2);
-    }
-    if (totalPages - 2 <= activePage) {
-      return Array.from({ length: 3 }, (_: null, i: number) => totalPages - 3 + i);
-    }
-    return Array.from({ length: 3 }, (_: null, i: number) => i + activePage - 1);
-  };
 
   const pagesArr: number[] = getVisiblePagesArray({ activePage: page, totalPages: maxPages });
 
@@ -34,22 +22,21 @@ export const PageSetter: React.FC = () => {
     setPage(dispatch, page + 1);
   };
 
+  // set active color of first and last page
+  const handleClick = (e: SyntheticEvent) => {
+    const value = e.currentTarget.id;
+    setPage(dispatch, Number(value));
+  };
+
   if (maxPages === 1) {
     return null;
   }
-
-  // set active color of first and last page
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    const value = e.currentTarget.innerText;
-    const parsedValue = parseInt(value);
-    setPage(dispatch, parsedValue);
-  };
 
   return (
     <Wrapper>
       <ArrowIcon src={paginationarrow} onClick={handleDecrementPage} />
       {maxPages > 5 && (
-        <PageNumber variant="primary" isActive={page === 1} onClick={handleClick}>
+        <PageNumber id="1" variant="primary" isActive={page === 1} onClick={handleClick}>
           1
         </PageNumber>
       )}
@@ -66,7 +53,12 @@ export const PageSetter: React.FC = () => {
       ))}
       {pagesArr[2] < maxPages - 1 && maxPages > 5 && <div>...</div>}
       {maxPages > 5 && (
-        <PageNumber variant="primary" isActive={maxPages === page} onClick={handleClick}>
+        <PageNumber
+          id={String(maxPages)}
+          variant="primary"
+          isActive={maxPages === page}
+          onClick={handleClick}
+        >
           {maxPages}
         </PageNumber>
       )}

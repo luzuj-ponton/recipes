@@ -8,10 +8,10 @@ import { rgba } from "polished";
 import { Link } from "react-router-dom";
 import { zIndex } from "src/enums/zIndex.enum";
 import { Breakpoint } from "src/enums/breakpoint.enum";
-import { HeartIconTypes, ImageContainerTypes } from "./Card.types";
+import { HeartIconProps, ImageContainerProps } from "./Card.types";
 import backupImage from "src/assets/images/backupImage.jpg";
 
-export const ImageContainer = styled.div<ImageContainerTypes>`
+export const ImageContainer = styled.div<ImageContainerProps>`
   position: relative;
   height: 140px;
   width: 100%;
@@ -32,7 +32,7 @@ export const ImageContainer = styled.div<ImageContainerTypes>`
     right: 0;
     bottom: 0;
     border-radius: 10px;
-    background-color: ${rgba(`${Color.Black}`, 0.05)};
+    background-color: ${rgba(Color.Black, 0.05)};
     transition: 0.4s;
   }
 
@@ -54,7 +54,7 @@ export const Wrapper = styled(Link)`
   min-height: 205px;
 `;
 
-export const HeartIcon = styled(svg)<HeartIconTypes>`
+export const HeartIcon = styled(svg)<HeartIconProps>`
   position: absolute;
   z-index: ${zIndex.HeartIcon};
   top: 15px;

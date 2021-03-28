@@ -1,3 +1,4 @@
+import { Value } from "@components/Pagination/components/Sort/Sort.types";
 import { Dispatch } from "react";
 import { PaginationActions } from "../../paginationActions.enum";
 import {
@@ -5,8 +6,7 @@ import {
   SetFilterTextAction,
   SetMaxPagesAction,
   SetPageAction,
-  SetSortByAction,
-  SetSortTypeAction,
+  SetSortAction,
 } from "../types/paginationActions.types";
 
 export const setPage = (dispatch: Dispatch<SetPageAction>, page: number) => {
@@ -25,9 +25,6 @@ export const setTagsArr = (dispatch: Dispatch<SetTagsArrAction>, tagsArr: string
   dispatch({ type: PaginationActions.SetTagsArr, payload: tagsArr });
 };
 
-export const setSortBy = (dispatch: Dispatch<SetSortByAction>, sortBy: string) => {
-  dispatch({ type: PaginationActions.SetSortBy, payload: sortBy });
-};
-export const setSortType = (dispatch: Dispatch<SetSortTypeAction>, sortType: number) => {
-  dispatch({ type: PaginationActions.SetSortType, payload: sortType });
+export const setSort = (dispatch: Dispatch<SetSortAction>, value: Value) => {
+  dispatch({ type: PaginationActions.SetSort, payload: value });
 };

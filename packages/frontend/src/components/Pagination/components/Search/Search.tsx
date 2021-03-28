@@ -5,7 +5,7 @@ import { usePaginationContext } from "src/components/Pagination/hooks/usePaginat
 import debounce from "lodash.debounce";
 import { useRef } from "react";
 
-export const Search = () => {
+export const Search: React.FC = () => {
   const [, dispatch] = usePaginationContext();
 
   const debounced = useRef(debounce((nextText) => setFilterText(dispatch, nextText), 1000)).current;

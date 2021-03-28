@@ -1,9 +1,6 @@
 import { Select } from "./Sort.styled";
 import { usePaginationContext } from "src/components/Pagination/hooks/usePaginationContext";
-import {
-  setSortBy,
-  setSortType,
-} from "src/components/Pagination/reducer/actions/pagination.actions";
+import { setSort } from "src/components/Pagination/reducer/actions/pagination.actions";
 import { options } from "./config";
 
 export const Sort: React.FC = () => {
@@ -11,18 +8,16 @@ export const Sort: React.FC = () => {
 
   const handleChange = (e: React.FormEvent<HTMLSelectElement>) => {
     const value = e.currentTarget.value;
-    const valuesArr = value.split(" ");
-    const sortBy = valuesArr[0];
-    const sortType = parseInt(valuesArr[1]);
 
-    setSortBy(dispatch, sortBy);
-    setSortType(dispatch, sortType);
+    const selectedOption = options.find((option) => option.text === value);
+
+    selectedOption && setSort(dispatch, selectedOption.value);
   };
 
   return (
     <Select onChange={handleChange}>
       {options.map((option) => (
-        <option key={option.value} value={option.value}>
+        <option key={option.text} value={option.text}>
           {option.text}
         </option>
       ))}
