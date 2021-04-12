@@ -90,7 +90,7 @@ export const Nav: React.FC = () => {
                 variant="tertiary"
                 onClick={toggleNav}
                 to={path}
-                $activeColor={path === pathname ? `${Color.LightGrey}` : null}
+                $activeColor={path === pathname ? `${Color.Red}` : null}
               >
                 {text}
               </RedirectButtonStyled>

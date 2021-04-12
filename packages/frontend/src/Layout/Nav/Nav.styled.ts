@@ -19,10 +19,13 @@ export const Hamburger = styled.div`
   height: 20px;
   width: 20px;
   position: fixed;
-  top: 38px;
-  left: 16px;
+  top: 36px;
+  left: 8px;
   cursor: pointer;
-  margin-right: 10px;
+
+  @media ${Breakpoint.MobileS} {
+    left: 16px;
+  }
 
   @media ${Breakpoint.Desktop} {
     display: none;
@@ -97,8 +100,12 @@ export const HeaderStyled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 16px;
+  padding-left: 20px;
   margin: 30px 0 20px 0;
+
+  @media ${Breakpoint.MobileS} {
+    padding-left: 30px;
+  }
 
   @media ${Breakpoint.Desktop} {
     padding-left: 0;

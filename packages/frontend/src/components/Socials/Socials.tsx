@@ -6,7 +6,7 @@ export const Socials: React.FC = () => (
   <>
     {socials.map((social) => (
       <IconWrap
-        key={social.src}
+        key={social.link}
         color={social.color}
         href={social.link}
         rel="noopener noreferrer"

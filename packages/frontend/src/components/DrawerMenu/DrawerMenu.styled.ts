@@ -31,7 +31,7 @@ export const CloseIcon = styled(svg)`
 export const NavStyled = styled.nav<NavStyledProps>`
   height: 100vh;
   padding: 20px;
-  background-color: ${Color.Black};
+  background-color: ${Color.DarkGrey};
   position: fixed;
   z-index: ${zIndex.DrawerMenu};
   transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(100%)")};
@@ -90,6 +90,6 @@ export const StyledRedirectButton = styled(RedirectButton)`
     margin-bottom: 40px;
   }
   @media ${Breakpoint.Tablet} {
-    width: 100%;
+    width: 160px;
   }
 `;

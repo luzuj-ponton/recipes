@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
   width: 100%;
   background-color: ${Color.Red};
   border-radius: 20px;
+  margin-top: 60px;
 `;
 export const ContentContainer = styled.section`
   padding: 30px;

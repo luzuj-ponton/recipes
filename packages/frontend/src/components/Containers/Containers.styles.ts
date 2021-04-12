@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { alignTypes, ContainerProps, FlexDirectionType, justifyTypes } from "./Containers.types";
+import { alignTypes, ContainerProps, justifyTypes, FlexDirectionType } from "./Containers.types";
 
 export const FlexContainer = styled.div<ContainerProps>`
   display: flex;

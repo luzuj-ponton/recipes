@@ -10,7 +10,6 @@ type ButtonVariants = "primary" | "secondary" | "tertiary" | "quaternary";
 interface StyledButtonProps {
   width?: number;
   variant: ButtonVariants;
-  $isActive?: boolean;
 }
 
 const ButtonStyles = {
@@ -38,9 +37,9 @@ const ButtonStyles = {
   `,
   tertiary: css`
     font-size: ${FontSize.Medium};
-    color: ${Color.Grey};
+    color: ${Color.White};
     :hover {
-      color: ${Color.White};
+      color: ${Color.Red};
     }
   `,
   quaternary: css`
